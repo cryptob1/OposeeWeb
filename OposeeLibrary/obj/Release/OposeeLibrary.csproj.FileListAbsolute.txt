@@ -1,0 +1,8 @@
+D:\oposee\oposee\OposeeLibrary\bin\Release\OposeeLibrary.dll
+D:\oposee\oposee\OposeeLibrary\bin\Release\OposeeLibrary.pdb
+D:\oposee\oposee\OposeeLibrary\bin\Release\Newtonsoft.Json.dll
+D:\oposee\oposee\OposeeLibrary\bin\Release\Newtonsoft.Json.pdb
+D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.csproj.CoreCompileInputs.cache
+D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.csproj.CopyComplete
+D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.dll
+D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.pdb

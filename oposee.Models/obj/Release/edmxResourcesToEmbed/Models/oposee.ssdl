@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="oposeeDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="BookMark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestionId" Type="int" Nullable="false" />
+    <Property Name="IsBookmark" Type="bit" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CommentedUserId" Type="int" Nullable="false" />
+    <Property Name="CommentId" Type="int" Nullable="false" />
+    <Property Name="Like" Type="bit" />
+    <Property Name="Dislike" Type="bit" />
+    <Property Name="Comment" Type="bit" />
+    <Property Name="SendNotification" Type="bit" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Opinion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="QuestId" Type="int" Nullable="false" />
+    <Property Name="Comment" Type="varchar(max)" />
+    <Property Name="CommentedUserId" Type="int" Nullable="false" />
+    <Property Name="Likes" Type="int" />
+    <Property Name="Dislikes" Type="int" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="PostQuestion" Type="nvarchar(max)" />
+    <Property Name="OwnerUserID" Type="int" Nullable="false" />
+    <Property Name="HashTags" Type="varchar" MaxLength="1000" />
+    <Property Name="CreationDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TotalToken" Type="int" />
+    <Property Name="BalanceToken" Type="int" />
+    <Property Name="UserId" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Users">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserName" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="FirstName" Type="varchar" MaxLength="20" />
+    <Property Name="LastName" Type="varchar" MaxLength="20" />
+    <Property Name="Email" Type="varchar" MaxLength="100" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="SocialID" Type="varchar" MaxLength="50" />
+    <Property Name="SocialType" Type="varchar" MaxLength="50" />
+    <Property Name="ImageURL" Type="varchar" MaxLength="300" />
+    <Property Name="DeviceType" Type="varchar" MaxLength="50" />
+    <Property Name="DeviceToken" Type="varchar" MaxLength="200" />
+    <Property Name="RecordStatus" Type="varchar" MaxLength="20" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="oposeeDbModelStoreContainer">
+    <EntitySet Name="BookMark" EntityType="Self.BookMark" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Notification" EntityType="Self.Notification" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Opinion" EntityType="Self.Opinion" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Question" EntityType="Self.Question" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Token" EntityType="Self.Token" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

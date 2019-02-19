@@ -1,0 +1,109 @@
+﻿@model oposee.Models.UserLogin
+@{
+    Layout = "";
+}
+@{
+    ViewBag.Title = "Login";
+}
+@Styles.Render("~/Content/vendor/fontawesome-free/css/all.min.css")
+@Styles.Render("https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i")
+@Styles.Render("~/Content/css/sb-admin-2.min.css")
+<div class="container">
+
+    <!-- Outer Row -->
+    <div class="row justify-content-center">
+
+        <div class="col-xl-10 col-lg-12 col-md-9">
+
+            <div class="card o-hidden border-0 shadow-lg my-5">
+                <div class="card-body p-0">
+                    <!-- Nested Row within Card Body -->
+                    <div class="row">
+                        <div class="col-lg-6 d-none d-lg-block "></div>
+                        <div class="col-lg-6">
+                            <div class="p-5">
+                                <div class="text-center">
+                                    <h1 class="h4 text-gray-900 mb-4">Welcome Admin!</h1>
+                                </div>
+                                @using (Html.BeginForm())
+                                {
+                                    @Html.AntiForgeryToken()
+
+
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                                    if (ViewBag.Message != "")
+                                    {
+                                        <div class="text-danger">@ViewBag.Message</div>
+                                    }
+
+                                    <div class="form-group">
+
+
+                                        @Html.EditorFor(model => model.EmailID, new { htmlAttributes = new { @class = "form-control form-control-user", @placeholder = "Email" } })
+                                        @Html.ValidationMessageFor(model => model.EmailID, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+
+                                        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-control-user", @placeholder = "Password" } })
+                                        @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group">
+                                        <div class="custom-control custom-checkbox small">
+                                            @Html.EditorFor(model => model.RememberMe, new { htmlAttributes = new { @class = "custom-control-input" } })
+                                            @Html.LabelFor(model => model.RememberMe, htmlAttributes: new { @class = "custom-control-label" })
+
+                                            @Html.ValidationMessageFor(model => model.RememberMe, "", new { @class = "text-danger" })
+                                        </div>
+                                    </div>
+                                    @*<a href="index.html" class="btn btn-primary btn-user btn-block">*@
+                                    <input type="submit" value="Login" class="btn btn-primary btn-user btn-block" />
+                                    @*</a>*@
+                                    <hr>
+                                    @*<a href="index.html" class="btn btn-google btn-user btn-block">
+                                            <i class="fab fa-google fa-fw"></i> Login with Google
+                                        </a>
+                                        <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                            <i class="fab fa-facebook-f fa-fw"></i> Login with Facebook
+                                        </a>*@
+                                    @*<div class="form-group">
+                                            <div class="col-md-offset-2 col-md-10">
+                                                <input type="submit" value="Create" class="btn btn-default" />
+                                            </div>
+                                        </div>*@
+
+                                }
+                                <hr>
+                                @*<div class="text-center">
+                                        <a class="small" href="forgot-password.html">Forgot Password?</a>
+                                    </div>
+                                    <div class="text-center">
+                                        <a class="small" href="register.html">Create an Account!</a>
+                                    </div>*@
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@*<div>
+        @Html.ActionLink("Register Now", "Registration", "User")
+    </div>*@
+
+
+
+@section Scripts{
+    <script src="~/Content/vendor/jquery/jquery.min.js"></script>
+    <script src="~/Content/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="~/Content/vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="~/Content/scripts/sb-admin-2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}

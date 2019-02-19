@@ -1,0 +1,88 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="oposeeDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="oposeeDbEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="BookMarks" EntityType="oposeeDbModel.BookMark" />
+    <EntitySet Name="Notifications" EntityType="oposeeDbModel.Notification" />
+    <EntitySet Name="Opinions" EntityType="oposeeDbModel.Opinion" />
+    <EntitySet Name="Questions" EntityType="oposeeDbModel.Question" />
+    <EntitySet Name="Tokens" EntityType="oposeeDbModel.Token" />
+    <EntitySet Name="Users" EntityType="oposeeDbModel.User" />
+  </EntityContainer>
+  <EntityType Name="BookMark">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestionId" Type="Int32" Nullable="false" />
+    <Property Name="IsBookmark" Type="Boolean" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Notification">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CommentedUserId" Type="Int32" Nullable="false" />
+    <Property Name="CommentId" Type="Int32" Nullable="false" />
+    <Property Name="Like" Type="Boolean" />
+    <Property Name="Dislike" Type="Boolean" />
+    <Property Name="Comment" Type="Boolean" />
+    <Property Name="SendNotification" Type="Boolean" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Opinion">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="QuestId" Type="Int32" Nullable="false" />
+    <Property Name="Comment" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CommentedUserId" Type="Int32" Nullable="false" />
+    <Property Name="Likes" Type="Int32" />
+    <Property Name="Dislikes" Type="Int32" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerUserID" Type="Int32" Nullable="false" />
+    <Property Name="HashTags" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Token">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TotalToken" Type="Int32" />
+    <Property Name="BalanceToken" Type="Int32" />
+    <Property Name="UserId" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="UserID" />
+    </Key>
+    <Property Name="UserID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserName" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FirstName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="SocialID" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="SocialType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ImageURL" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="DeviceType" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="DeviceToken" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="RecordStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+  </EntityType>
+</Schema>

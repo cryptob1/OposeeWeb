@@ -1,0 +1,120 @@
+﻿@model oposee.Models.Models.User
+@{
+    ViewBag.Title = "Registration";
+}
+<h2>Registration</h2>
+@if (ViewBag.Status != null && Convert.ToBoolean(ViewBag.Status))
+{
+    if (ViewBag.Message != null)
+    {
+        <div class="alert alert-success">
+            <strong>Success!</strong>@ViewBag.Message
+        </div>
+    }
+}
+else
+{
+    <div class="container">
+
+        <div class="card o-hidden border-0 shadow-lg my-5">
+            <div class="card-body p-0">
+                <!-- Nested Row within Card Body -->
+                <div class="row">
+                    <div class="col-lg-5 d-none d-lg-block"></div>
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h1 class="h4 text-gray-900 mb-4">Create an Account!</h1>
+                            </div>
+                            @using (Html.BeginForm("", "", new { ReturnUrl = ViewBag.ReturnUrl },
+                                     FormMethod.Post, new { @class = "user" }))
+                            {
+                                @Html.AntiForgeryToken()
+
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">
+                                        @Html.EditorFor(model => model.FirstName, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                        @Html.ValidationMessageFor(model => model.FirstName, "", new { @class = "text-danger" })
+
+                                    </div>
+                                    <div class="col-sm-6">
+
+
+                                        @Html.EditorFor(model => model.LastName, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                        @Html.ValidationMessageFor(model => model.LastName, "", new { @class = "text-danger" })
+                                    </div>
+                                </div>
+                                <div class="form-group">
+
+                                    <div class="col-md-10">
+                                        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                        @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                                        @Html.ValidationMessage("EmailExist", new { @class = "text-danger" })
+                                    </div>
+                                    <div class="form-group row">
+                                        <div class="col-sm-6 mb-3 mb-sm-0">
+
+
+                                            @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control form-control-user" } })
+                                            @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <input type="password" class="form-control form-control-user" id="exampleRepeatPassword" placeholder="Repeat Password">
+                                        </div>
+                                    </div>
+                                    <a href="login.html" class="btn btn-primary btn-user btn-block">
+                                        Register Account
+                                    </a>
+                                    <hr>
+                                    <a href="index.html" class="btn btn-google btn-user btn-block">
+                                        <i class="fab fa-google fa-fw"></i> Register with Google
+                                    </a>
+                                    <a href="index.html" class="btn btn-facebook btn-user btn-block">
+                                        <i class="fab fa-facebook-f fa-fw"></i> Register with Facebook
+                                    </a>
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <input type="submit" value="Create" class="btn btn-default" />
+                                    </div>
+                                </div>
+
+                                if (ViewBag.Message != null)
+                                {
+                                    <div class="alert alert-danger">
+                                        <strong>Error!</strong>@ViewBag.Message
+                                    </div>
+                                }
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+}
+
+
+<div>
+    @Html.ActionLink("Login", "Login")
+</div>
+
+@section Scripts{
+    @*<link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">*@
+    <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <script src="vendor/jquery/jquery.min.js"></script>
+    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Core plugin JavaScript-->
+    <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+    <!-- Custom scripts for all pages-->
+    <script src="js/sb-admin-2.min.js"></script>
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.min.js"></script>
+}
+
