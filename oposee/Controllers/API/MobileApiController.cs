@@ -12,6 +12,7 @@ using OposeeLibrary.API;
 using static OposeeLibrary.Utilities.ResizeImage;
 using OposeeLibrary.Utilities;
 using System.Data.Entity;
+using System.Data.SqlClient;
 
 namespace oposee.Controllers.API
 {
@@ -345,49 +346,55 @@ namespace oposee.Controllers.API
         #region "Get All Opinion by question Id" 
         [HttpGet]
         [Route("api/MobileApi/GetAllOpinion")]
-        public HttpResponseMessage GetAllOpinion(string questId)
+        public HttpResponseMessage GetAllOpinion(string questId, string userid)
         {
             try
             {
-                db.Configuration.LazyLoadingEnabled = false;
-                if (!ModelState.IsValid)
+                using (oposeeDbEntities db = new oposeeDbEntities())
                 {
-                    return Request.CreateErrorResponse(HttpStatusCode.OK, ModelState);
+                    if (!ModelState.IsValid)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.OK, ModelState);
+                    }
+                    BookMarkQuestion questionDetail = new BookMarkQuestion();
+                    int id = Convert.ToInt32(questId);
+                    int userId = Convert.ToInt32(userid);
+                    questionDetail.PostQuestionDetail = (from q in db.Questions
+                                                         join u in db.Users on q.OwnerUserID equals u.UserID
+                                                         where q.Id == id
+                                                         select new BookMarkQuestionDetail
+                                                         {
+                                                             Id = q.Id,
+                                                             Question = q.PostQuestion,
+                                                             OwnerUserID = q.OwnerUserID,
+                                                             OwnerUserName = u.UserName,
+                                                             UserImage = string.IsNullOrEmpty(u.ImageURL) ? "" : u.ImageURL,
+                                                             HashTags = q.HashTags,
+
+                                                             //IsBookmark = db.BookMarks.Where(b => b.UserId == userId && b.QuestionId == id).Select(b => b.IsBookmark.HasValue ? b.IsBookmark.   Value:false ).FirstOrDefault(),
+                                                             CreationDate = q.CreationDate
+                                                         }).FirstOrDefault();
+
+
+                    questionDetail.Comments = (from e in db.Opinions
+                                               join t in db.Users on e.CommentedUserId equals t.UserID
+                                               where e.QuestId == id
+                                               select new Comments
+                                               {
+                                                   Id = e.Id,
+                                                   Comment = e.Comment,
+                                                   CommentedUserId = t.UserID,
+                                                   UserImage = string.IsNullOrEmpty(t.ImageURL) ? "" : t.ImageURL,
+                                                   LikesCount = db.Notifications.Where(p => p.CommentId == e.Id && p.Like == true).Count(),
+                                                   DislikesCount = db.Notifications.Where(p => p.CommentId == e.Id && p.Dislike == true).Count(),
+                                                   Likes = db.Notifications.Where(p => p.CommentedUserId == userId && p.CommentId == e.Id).Select(b => b.Like.HasValue ? b.Like.Value : false).FirstOrDefault(),
+                                                   DisLikes = db.Notifications.Where(p => p.CommentedUserId == userId && p.CommentId == e.Id).Select(b => b.Dislike.HasValue ? b.Dislike.Value : false).FirstOrDefault(),
+                                                   CommentedUserName = t.UserName,
+                                                   CreationDate = e.CreationDate
+                                               }).ToList();
+
+                    return Request.CreateResponse(HttpStatusCode.OK, JsonResponse.GetResponse(ResponseCode.Success, questionDetail, "AllOpinion"));
                 }
-                QuestionDetail questionDetail = new QuestionDetail();
-                int id = Convert.ToInt32(questId);
-
-                questionDetail.PostQuestionDetail = (from q in db.Questions
-                                                     join u in db.Users on q.OwnerUserID equals u.UserID
-                                                     where q.Id == id
-                                                     select new PostQuestionDetail
-                                                     {
-                                                         Id = q.Id,
-                                                         Question = q.PostQuestion,
-                                                         OwnerUserID = q.OwnerUserID,
-                                                         OwnerUserName = u.UserName,
-                                                         UserImage = string.IsNullOrEmpty(u.ImageURL) ? "" : u.ImageURL,
-                                                         HashTags = q.HashTags,
-                                                         CreationDate = q.CreationDate
-                                                     }).FirstOrDefault();
-
-
-                questionDetail.Comments = (from e in db.Opinions
-                                           join t in db.Users on e.CommentedUserId equals t.UserID
-                                           where e.QuestId == id
-                                           select new Comments
-                                           {
-                                               Id = e.Id,
-                                               Comment = e.Comment,
-                                               CommentedUserId = t.UserID,
-                                               UserImage = string.IsNullOrEmpty(t.ImageURL) ? "" : t.ImageURL,
-                                               Likes = db.Notifications.Where(p => p.CommentId == e.Id && p.Like == true).Count(),
-                                               Dislikes = db.Notifications.Where(p => p.CommentId == e.Id && p.Dislike == true).Count(),
-                                               CommentedUserName = t.UserName,
-                                               CreationDate = e.CreationDate
-                                           }).ToList();
-
-                return Request.CreateResponse(HttpStatusCode.OK, JsonResponse.GetResponse(ResponseCode.Success, questionDetail, "AllOpinion"));
             }
             catch (Exception ex)
             {

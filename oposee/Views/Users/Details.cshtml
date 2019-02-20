@@ -5,10 +5,10 @@
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 
-<h2>Details</h2>
+<h2>User Detail</h2>
 
 <div>
-    <h4>User</h4>
+   
     <hr />
     <dl class="dl-horizontal">
         <dt>
@@ -72,7 +72,7 @@
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.ImageURL)
+            <img width="20%" src="@Html.Raw(Model.ImageURL)" alt="Image" />
         </dd>
 
         <dt>

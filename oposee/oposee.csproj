@@ -220,6 +220,7 @@
     <Compile Include="Models\API\QuestionDetail.cs" />
     <Compile Include="Models\API\UserNotifications.cs" />
     <Compile Include="Models\UserLogin.cs" />
+    <Compile Include="Models\ViewModelUser.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

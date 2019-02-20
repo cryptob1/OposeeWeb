@@ -47,7 +47,11 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
-
+span.toggle-handle.btn.btn-default {
+    color: #333;
+    background-color: #fff;
+    border-color: #ccc;
+}
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -73,7 +77,19 @@ body {
 [tabindex="-1"]:focus {
   outline: 0 !important;
 }
-
+.logindiv {
+    width: 100%;
+    float: left;
+    text-align: center;
+}
+    .logindiv .p-5 {
+        max-width: 70%;
+        float: none;
+        display: inline-block;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        width: 70%;
+    }
 hr {
   -webkit-box-sizing: content-box;
   box-sizing: content-box;
