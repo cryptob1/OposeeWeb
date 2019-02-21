@@ -67,6 +67,7 @@
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="oposeeDbModel.User">
         <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
           <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="RecordStatus" ColumnName="RecordStatus" />

@@ -370,8 +370,7 @@ namespace oposee.Controllers.API
                                                              OwnerUserName = u.UserName,
                                                              UserImage = string.IsNullOrEmpty(u.ImageURL) ? "" : u.ImageURL,
                                                              HashTags = q.HashTags,
-
-                                                             //IsBookmark = db.BookMarks.Where(b => b.UserId == userId && b.QuestionId == id).Select(b => b.IsBookmark.HasValue ? b.IsBookmark.   Value:false ).FirstOrDefault(),
+                                                             IsBookmark = db.BookMarks.Where(b => b.UserId == userId && b.QuestionId == id).Select(b => b.IsBookmark.HasValue ? b.IsBookmark.Value : false).FirstOrDefault(),
                                                              CreationDate = q.CreationDate
                                                          }).FirstOrDefault();
 

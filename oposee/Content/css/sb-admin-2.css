@@ -58,7 +58,12 @@ html {
   -webkit-text-size-adjust: 100%;
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
-
+.ui-widget-header {
+    border: 1px solid #607bc9!important;
+    background: #617cc9!important;
+    color: #ffffff!important;
+    font-weight: bold;
+}
 article, aside, figcaption, figure, footer, header, hgroup, main, nav, section {
   display: block;
 }

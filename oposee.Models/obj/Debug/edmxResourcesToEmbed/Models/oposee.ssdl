@@ -68,6 +68,7 @@
     <Property Name="LastName" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" />
     <Property Name="SocialID" Type="varchar" MaxLength="50" />
     <Property Name="SocialType" Type="varchar" MaxLength="50" />
     <Property Name="ImageURL" Type="varchar" MaxLength="300" />

@@ -40,12 +40,12 @@ namespace oposee.Controllers
                 #endregion
 
                 #region Generate Activation Code 
-               // user.ActivationCode = Guid.NewGuid();
+                // user.ActivationCode = Guid.NewGuid();
                 #endregion
 
                 #region  Password Hashing 
                 user.Password = Crypto.Hash(user.Password);
-               // user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword); //
+                // user.ConfirmPassword = Crypto.Hash(user.ConfirmPassword); //
                 #endregion
                 //user.IsEmailVerified = false;
 
@@ -56,7 +56,7 @@ namespace oposee.Controllers
                     dc.SaveChanges();
 
                     //Send Email to User
-                   // SendVerificationLinkEmail(user.Email, user.ActivationCode.ToString());
+                    // SendVerificationLinkEmail(user.Email, user.ActivationCode.ToString());
                     message = "Registration successfully done. Account activation link " +
                         " has been sent to your email id:" + user.Email;
                     Status = true;
@@ -113,15 +113,17 @@ namespace oposee.Controllers
             string message = "";
             using (oposeeDbEntities db = new oposeeDbEntities())
             {
-                var v = db.Users.Where(a => a.Email == login.EmailID).FirstOrDefault();
+                //if ("admin@gmail.com" != login.EmailID)
+                //// if ("salman@sdsol.com" != input.Email)
+                //{
+                //    ViewBag.Message = "Invalid Admin Email";
+                //    ViewBag.Type = "alert-danger";
+                //    Session.RemoveAll();
+                //    return View();
+                //}
+                var v = db.Users.Where(a => a.Email == login.EmailID && a.IsAdmin == true).FirstOrDefault();
                 if (v != null)
                 {
-                    //if (!v.IsEmailVerified)
-                    //{
-                    //    ViewBag.Message = "Please verify your email first";
-                    //    return View();
-                    //}
-
                     if (string.Compare(AesCryptography.Encrypt(login.Password), v.Password) == 0)
                     {
                         int timeout = login.RememberMe ? 525600 : 20; // 525600 min = 1 year
@@ -139,6 +141,7 @@ namespace oposee.Controllers
                         }
                         else
                         {
+                            Session["AdminID"] = login.EmailID;
                             return RedirectToAction("Index", "Home");
                         }
                     }
@@ -153,6 +156,7 @@ namespace oposee.Controllers
                 }
             }
             ViewBag.Message = message;
+            Session.RemoveAll();
             return View();
         }
 

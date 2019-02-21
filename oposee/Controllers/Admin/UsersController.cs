@@ -40,57 +40,57 @@ namespace oposee.Controllers.Admin
 
             ViewBag.CurrentFilter = searchString;
 
-            var students = from s in db.Users
+            var users = from s in db.Users
                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                students = students.Where(s => s.LastName.Contains(searchString)
+                users = users.Where(s => s.LastName.Contains(searchString)
                                        || s.FirstName.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "username":
-                    students = students.OrderBy(s => s.UserName);
+                    users = users.OrderBy(s => s.UserName);
                     break;
                 case "username_desc":
-                    students = students.OrderByDescending(s => s.UserName);
+                    users = users.OrderByDescending(s => s.UserName);
                     break;
 
                 case "firstname_desc":
-                    students = students.OrderByDescending(s => s.FirstName);
+                    users = users.OrderByDescending(s => s.FirstName);
                     break;
                 case "email":
-                    students = students.OrderBy(s => s.Email);
+                    users = users.OrderBy(s => s.Email);
                     break;
                 case "email_desc":
-                    students = students.OrderByDescending(s => s.Email);
+                    users = users.OrderByDescending(s => s.Email);
                     break;
                 case "lastname":
-                    students = students.OrderBy(s => s.LastName);
+                    users = users.OrderBy(s => s.LastName);
                     break;
                 case "lastname_desc":
-                    students = students.OrderByDescending(s => s.LastName);
+                    users = users.OrderByDescending(s => s.LastName);
                     break;
                 case "recordstatus":
-                    students = students.OrderBy(s => s.RecordStatus);
+                    users = users.OrderBy(s => s.RecordStatus);
                     break;
                 case "recordstatus_desc":
-                    students = students.OrderByDescending(s => s.RecordStatus);
+                    users = users.OrderByDescending(s => s.RecordStatus);
                     break;
                 case "date":
-                    students = students.OrderBy(s => s.CreatedDate);
+                    users = users.OrderBy(s => s.CreatedDate);
                     break;
                 case "date_desc":
-                    students = students.OrderByDescending(s => s.CreatedDate);
+                    users = users.OrderByDescending(s => s.CreatedDate);
                     break;
                 default:  // Name ascending 
-                    students = students.OrderBy(s => s.FirstName);
+                    users = users.OrderBy(s => s.FirstName);
                     break;
             }
 
             int pageSize = 6;
             int pageNumber = (page ?? 1);
-            return View(students.ToPagedList(pageNumber, pageSize));
+            return View(users.ToPagedList(pageNumber, pageSize));
             // return View(db.Users.ToList());
         }
 
@@ -102,6 +102,7 @@ namespace oposee.Controllers.Admin
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = db.Users.Find(id);
+            user.Password = AesCryptography.Decrypt(user.Password);
             if (user == null)
             {
                 return HttpNotFound();
@@ -112,7 +113,8 @@ namespace oposee.Controllers.Admin
         // GET: Users/Create
         public ActionResult Create()
         {
-            return View();
+            ViewModelUser ViewUser = new ViewModelUser();
+            return View(ViewUser);
         }
 
         // POST: Users/Create
@@ -200,11 +202,19 @@ namespace oposee.Controllers.Admin
                 }
                 user.Email = ViewUser.Email;
                 string _SiteURL = WebConfigurationManager.AppSettings["SiteImgURL"];
-                //user.ImageURL = _SiteURL + "/ProfileImage/" + ViewUser.ImageURL_data.FileName;
-                //var path = Path.Combine(Server.MapPath("~/Content/Upload/ProfileImage"), ViewUser.ImageURL_data.FileName);
-                //ViewUser.ImageURL_data.SaveAs(path);
+                if (ViewUser.ImageURL_data != null)
+                {
+                    user.ImageURL = _SiteURL + "/ProfileImage/" + ViewUser.ImageURL_data.FileName;
+                    var path = Path.Combine(Server.MapPath("~/Content/Upload/ProfileImage"), ViewUser.ImageURL_data.FileName);
+                    ViewUser.ImageURL_data.SaveAs(path);
+                }
+                else
+                {
+                    user.ImageURL = _SiteURL + "/ProfileImage/oposee-profile.png";
+                    
+                }
                 user.CreatedDate = ViewUser.CreatedDate;
-                user.ImageURL = ViewUser.ImageURL;
+                //user.ImageURL = ViewUser.ImageURL;
                 user.UserID = ViewUser.UserID;
                 user.DeviceType = ViewUser.DeviceType;
                 user.DeviceToken = ViewUser.DeviceToken;
@@ -235,8 +245,7 @@ namespace oposee.Controllers.Admin
         }
 
         // POST: Users/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
             User user = db.Users.Find(id);
