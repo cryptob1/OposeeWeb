@@ -202,7 +202,7 @@ namespace oposee.Controllers.API
         #region "Post Question" 
         [HttpPost]
         [Route("api/MobileApi/PostQuestion")]
-        public HttpResponseMessage PostQuestion([FromBody] PostQuestion postQuestion)
+        public HttpResponseMessage PostQuestion([FromBody] Question postQuestion)
         {
             try
             {
@@ -216,11 +216,11 @@ namespace oposee.Controllers.API
                                        ).FirstOrDefault();
                 if (quest != null)
                 {
-                    quest.PostQuestion = postQuestion.Question;
+                    quest.PostQuestion = postQuestion.PostQuestion;
                     quest.OwnerUserID = postQuestion.OwnerUserID;
                     quest.HashTags = postQuestion.HashTags;
                     quest.ModifiedDate = DateTime.Now;
-                    db.Entry(quest).State = System.Data.Entity.EntityState.Modified;
+                    db.Entry(postQuestion).State = System.Data.Entity.EntityState.Modified;
                     db.SaveChanges();
                     int questID = quest.Id;
                     quest = db.Questions.Find(questID);
@@ -230,7 +230,7 @@ namespace oposee.Controllers.API
                 {
                     quest = new Question();
                     Token token = new Token();
-                    quest.PostQuestion = postQuestion.Question;
+                    quest.PostQuestion = postQuestion.PostQuestion;
                     quest.OwnerUserID = postQuestion.OwnerUserID;
                     quest.HashTags = postQuestion.HashTags;
                     quest.CreationDate = DateTime.Now;

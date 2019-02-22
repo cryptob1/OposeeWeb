@@ -202,52 +202,55 @@
 
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-    <script>
-        function previewImage(event) {
-            debugger
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
+        <script>
+            function previewImage(event) {
+                debugger
             // Get a reference to the image element
             var image = document.querySelector("#instrumentImage");
-            // Set its source to the file in the <input type=file element
-            image.src = URL.createObjectURL(event.target.files[0]);
+                // Set its source to the file in the <input type=file element
+                image.src = URL.createObjectURL(event.target.files[0]);
         };
         // delete Link
-        $(document).ready(function () {
-            $('.delete-link').click(function () {
-                debugger;
-                var deleteLinkObj = $(this);  //for future use
+            $(document).ready(function () {
+                $('.delete-link').click(function () {
+                    debugger;
+                    var deleteLinkObj = $(this);  //for future use
 
-                $("#delete-dialog").dialog({
-                    title: "Confirmation",
-                    buttons: {
-                        Continue: function () {
-                            debugger;
-                            $.post(deleteLinkObj[0].href, function (data) {  //Post to action
-                                if (data.Status == 'true') {
-                                    var tr = deleteLinkObj.parents('tr:first');
-                                    tr.hide('fast'); //Hide Row
-                                }
-                                else {
-                                    //(optional) Display Error
-                                }
-                            });
-                            $(this).dialog('close');
+                    $("#delete-dialog").dialog({
+                        title: "Confirmation",
+                        buttons: {
+                            Continue: function () {
+                                debugger;
+                                $.post(deleteLinkObj[0].href, function (data) {  //Post to action
+                                    if (data.Status == 'true') {
+                                        var tr = deleteLinkObj.parents('tr:first');
+                                        tr.hide('fast'); //Hide Row
+                                    }
+                                    else {
+                                        //(optional) Display Error
+                                    }
+                                });
+                                $(this).dialog('close');
+                            },
+                            Close: function () {
+                                $(this).dialog('close');
+                            }
                         },
-                        Close: function () {
-                            $(this).dialog('close');
-                        }
-                    },
-                    dialogClass: 'dialog_css',
-                    width: 400,
-                    closeOnEscape: false,
-                    draggable: false,
-                    resizable: false,
-                    modal: true
-                });
-                return false; // prevents the default behaviour
+                        dialogClass: 'dialog_css',
+                        width: 400,
+                        closeOnEscape: false,
+                        draggable: false,
+                        resizable: false,
+                        modal: true
+                    });
+                    return false; // prevents the default behaviour
 
+                });
             });
-        });
     </script>
+        
     @RenderSection("scripts", required: false)
 </body>
 </html>

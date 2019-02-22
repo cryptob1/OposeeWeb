@@ -66,14 +66,14 @@ namespace oposee.Controllers.Admin
                                  CreationDate = q.CreationDate
                              }).ToList();
             }
-            
+
             if (!String.IsNullOrEmpty(searchString))
             {
                 questList = questList.Where(s => s.Question.Contains(searchString)).ToList();
             }
             switch (sortOrder)
             {
-               
+
                 case "question_desc":
                     questList = questList.OrderByDescending(s => s.Question).ToList();
                     break;
@@ -81,7 +81,7 @@ namespace oposee.Controllers.Admin
                     questList = questList.OrderByDescending(s => s.HashTags).ToList();
                     break;
                 case "hashtags":
-                    questList = questList.OrderBy(s => s.HashTags).ToList(); 
+                    questList = questList.OrderBy(s => s.HashTags).ToList();
                     break;
                 case "user_desc":
                     questList = questList.OrderByDescending(s => s.OwnerUserName).ToList();
@@ -125,9 +125,45 @@ namespace oposee.Controllers.Admin
         // GET: Questions/Create
         public ActionResult Create()
         {
+            //var customerList = GetUsers();
+            //PostQuestion post = new PostQuestion();
+            //post.UserName = customerList.ToList();
+            //return View(customerList);
             return View();
         }
+        private IEnumerable<SelectListItem> GetUsers()
+        {
+            //oposeeDbEntities entities = new oposeeDbEntities();
+            //List<SelectListItem> userList = (from p in entities.Users.Where(p => p.IsAdmin == false).AsEnumerable()
+            //                                     select new SelectListItem
+            //                                     {
+            //                                         Text = p.UserName,
+            //                                         Value = p.UserID.ToString()
+            //                                     }).ToList();
 
+
+            ////Add Default Item at First Position.
+            //userList.Insert(0, new SelectListItem { Text = "--Select User--", Value = "" });
+            //return SelectList(userList);
+            using (var context = new oposeeDbEntities())
+            {
+                List<SelectListItem> countries = context.Users.AsNoTracking()
+                    .OrderBy(n => n.UserName)
+                        .Select(n =>
+                        new SelectListItem
+                        {
+                            Value = n.UserID.ToString(),
+                            Text = n.UserName
+                        }).ToList();
+                var countrytip = new SelectListItem()
+                {
+                    Value = null,
+                    Text = "--- select country ---"
+                };
+                countries.Insert(0, countrytip);
+                return new SelectList(countries, "Value", "Text");
+            }
+        }
         // POST: Questions/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -137,6 +173,7 @@ namespace oposee.Controllers.Admin
         {
             if (ModelState.IsValid)
             {
+                question.CreationDate = DateTime.Now;
                 db.Questions.Add(question);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -152,7 +189,18 @@ namespace oposee.Controllers.Admin
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Question question = db.Questions.Find(id);
+            //Question question = db.Questions.Find(id);
+            PostQuestion question = (from q in db.Questions
+                                     join u in db.Users on q.OwnerUserID equals u.UserID
+                                     where q.Id == id
+                                     select new PostQuestion
+                                     {
+                                         Id = q.Id,
+                                         Question = q.PostQuestion,
+                                         OwnerUserID = q.OwnerUserID,
+                                         OwnerUserName = u.UserName,
+                                         HashTags = q.HashTags
+                                     }).FirstOrDefault();
             if (question == null)
             {
                 return HttpNotFound();
@@ -165,15 +213,22 @@ namespace oposee.Controllers.Admin
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,PostQuestion,OwnerUserID,HashTags,CreationDate,ModifiedDate")] Question question)
+        public ActionResult Edit(PostQuestion postQuestion)
         {
             if (ModelState.IsValid)
             {
+                Question question = new Question();
+                question.PostQuestion = postQuestion.Question;
+                question.HashTags = postQuestion.HashTags;
+                question.Id = postQuestion.Id;
+                question.ModifiedDate = DateTime.Now;
+                question.OwnerUserID = postQuestion.OwnerUserID;
+
                 db.Entry(question).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(question);
+            return View(postQuestion);
         }
 
         // GET: Questions/Delete/5
@@ -192,8 +247,7 @@ namespace oposee.Controllers.Admin
         }
 
         // POST: Questions/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
+        [HttpPost]
         public ActionResult DeleteConfirmed(int id)
         {
             Question question = db.Questions.Find(id);
