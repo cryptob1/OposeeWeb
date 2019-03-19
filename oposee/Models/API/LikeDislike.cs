@@ -12,7 +12,7 @@ namespace oposee.Models.API
         public int CommentedUserId { get; set; }
         public int CommentId { get; set; }
         public CommentStatus CommentStatus { get; set; }
-        
+        public int questId { get; set; }
         public string CreationDate { get; set; }
         public string ModifiedDate { get; set; }
     }

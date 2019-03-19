@@ -64,9 +64,16 @@
         <div class="form-group">
             @Html.LabelFor(model => model.ImageURL, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.TextBoxFor(model => model.ImageURL_data, new { Type = "File" })
+               
+                @Html.TextBoxFor(model => model.ImageURL_data, new { Type = "File", onchange = "previewImage(event)" })
+
                 @*@Html.EditorFor(model => model.ImageURL, new { htmlAttributes = new { @class = "form-control" } })*@
                 @Html.ValidationMessageFor(model => model.ImageURL_data, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <img src="@Html.Raw(Model.ImageURL)" alt="" id="instrumentImage" class="img-thumbnail" width="280" />
             </div>
         </div>
 

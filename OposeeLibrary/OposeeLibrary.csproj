@@ -50,15 +50,14 @@
     <Compile Include="ImageBlurFilter\ExtBitmap.cs" />
     <Compile Include="ImageBlurFilter\Matrix.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="PushNotfication\PushNotifications.cs" />
     <Compile Include="Utilities\AesCryptography.cs" />
     <Compile Include="Utilities\Helper.cs" />
     <Compile Include="Utilities\LogHelper.cs" />
     <Compile Include="Utilities\Numerics.cs" />
     <Compile Include="Utilities\ResizeImage.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="PushNotfication\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <PackageReference Include="Newtonsoft.Json">
       <Version>12.0.1</Version>

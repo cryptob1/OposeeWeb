@@ -23,6 +23,7 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CommentedUserId" Type="int" Nullable="false" />
           <Property Name="CommentId" Type="int" Nullable="false" />
+          <Property Name="questId" Type="int" />
           <Property Name="Like" Type="bit" />
           <Property Name="Dislike" Type="bit" />
           <Property Name="Comment" Type="bit" />
@@ -38,6 +39,7 @@
           <Property Name="QuestId" Type="int" Nullable="false" />
           <Property Name="Comment" Type="varchar(max)" />
           <Property Name="CommentedUserId" Type="int" Nullable="false" />
+          <Property Name="IsAgree" Type="bit" />
           <Property Name="Likes" Type="int" />
           <Property Name="Dislikes" Type="int" />
           <Property Name="CreationDate" Type="datetime" />
@@ -50,6 +52,8 @@
           <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="PostQuestion" Type="nvarchar(max)" />
           <Property Name="OwnerUserID" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" />
+          <Property Name="TaggedUser" Type="varchar(max)" />
           <Property Name="HashTags" Type="varchar" MaxLength="1000" />
           <Property Name="CreationDate" Type="datetime" />
           <Property Name="ModifiedDate" Type="datetime" />
@@ -99,9 +103,9 @@
           <EntitySet Name="BookMarks" EntityType="oposeeDbModel.BookMark" />
           <EntitySet Name="Notifications" EntityType="oposeeDbModel.Notification" />
           <EntitySet Name="Opinions" EntityType="oposeeDbModel.Opinion" />
-          <EntitySet Name="Questions" EntityType="oposeeDbModel.Question" />
           <EntitySet Name="Tokens" EntityType="oposeeDbModel.Token" />
           <EntitySet Name="Users" EntityType="oposeeDbModel.User" />
+          <EntitySet Name="Questions" EntityType="oposeeDbModel.Question" />
         </EntityContainer>
         <EntityType Name="BookMark">
           <Key>
@@ -127,6 +131,7 @@
           <Property Name="SendNotification" Type="Boolean" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="questId" Type="Int32" />
         </EntityType>
         <EntityType Name="Opinion">
           <Key>
@@ -140,17 +145,7 @@
           <Property Name="Dislikes" Type="Int32" />
           <Property Name="CreationDate" Type="DateTime" Precision="3" />
           <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-        </EntityType>
-        <EntityType Name="Question">
-          <Key>
-            <PropertyRef Name="Id" />
-          </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="PostQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-          <Property Name="OwnerUserID" Type="Int32" Nullable="false" />
-          <Property Name="HashTags" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-          <Property Name="CreationDate" Type="DateTime" Precision="3" />
-          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+          <Property Name="IsAgree" Type="Boolean" />
         </EntityType>
         <EntityType Name="Token">
           <Key>
@@ -181,6 +176,19 @@
           <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="IsAdmin" Type="Boolean" />
         </EntityType>
+        <EntityType Name="Question">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PostQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="OwnerUserID" Type="Int32" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" />
+          <Property Name="TaggedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="HashTags" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CreationDate" Type="DateTime" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -202,6 +210,7 @@
           <EntitySetMapping Name="Notifications">
             <EntityTypeMapping TypeName="oposeeDbModel.Notification">
               <MappingFragment StoreEntitySet="Notification">
+                <ScalarProperty Name="questId" ColumnName="questId" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="SendNotification" ColumnName="SendNotification" />
@@ -217,6 +226,7 @@
           <EntitySetMapping Name="Opinions">
             <EntityTypeMapping TypeName="oposeeDbModel.Opinion">
               <MappingFragment StoreEntitySet="Opinion">
+                <ScalarProperty Name="IsAgree" ColumnName="IsAgree" />
                 <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
                 <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
                 <ScalarProperty Name="Dislikes" ColumnName="Dislikes" />
@@ -224,18 +234,6 @@
                 <ScalarProperty Name="CommentedUserId" ColumnName="CommentedUserId" />
                 <ScalarProperty Name="Comment" ColumnName="Comment" />
                 <ScalarProperty Name="QuestId" ColumnName="QuestId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="Questions">
-            <EntityTypeMapping TypeName="oposeeDbModel.Question">
-              <MappingFragment StoreEntitySet="Question">
-                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-                <ScalarProperty Name="HashTags" ColumnName="HashTags" />
-                <ScalarProperty Name="OwnerUserID" ColumnName="OwnerUserID" />
-                <ScalarProperty Name="PostQuestion" ColumnName="PostQuestion" />
                 <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
@@ -268,6 +266,20 @@
                 <ScalarProperty Name="FirstName" ColumnName="FirstName" />
                 <ScalarProperty Name="UserName" ColumnName="UserName" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Questions">
+            <EntityTypeMapping TypeName="oposeeDbModel.Question">
+              <MappingFragment StoreEntitySet="Question">
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+                <ScalarProperty Name="HashTags" ColumnName="HashTags" />
+                <ScalarProperty Name="TaggedUser" ColumnName="TaggedUser" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="OwnerUserID" ColumnName="OwnerUserID" />
+                <ScalarProperty Name="PostQuestion" ColumnName="PostQuestion" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

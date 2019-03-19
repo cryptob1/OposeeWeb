@@ -14,6 +14,7 @@ namespace oposee.Models.API
         public string CreationDate { get; set; }
         public string ModifiedDate { get; set; }
         public int Likes { get; set; }
+        public bool OpinionAgreeStatus { get; set; }
         public int Dislikes { get; set; }
     }
 }

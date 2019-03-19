@@ -16,6 +16,7 @@
     <EntitySetMapping Name="Notifications">
       <EntityTypeMapping TypeName="oposeeDbModel.Notification">
         <MappingFragment StoreEntitySet="Notification">
+          <ScalarProperty Name="questId" ColumnName="questId" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
           <ScalarProperty Name="SendNotification" ColumnName="SendNotification" />
@@ -31,6 +32,7 @@
     <EntitySetMapping Name="Opinions">
       <EntityTypeMapping TypeName="oposeeDbModel.Opinion">
         <MappingFragment StoreEntitySet="Opinion">
+          <ScalarProperty Name="IsAgree" ColumnName="IsAgree" />
           <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
           <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
           <ScalarProperty Name="Dislikes" ColumnName="Dislikes" />
@@ -38,18 +40,6 @@
           <ScalarProperty Name="CommentedUserId" ColumnName="CommentedUserId" />
           <ScalarProperty Name="Comment" ColumnName="Comment" />
           <ScalarProperty Name="QuestId" ColumnName="QuestId" />
-          <ScalarProperty Name="Id" ColumnName="Id" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="Questions">
-      <EntityTypeMapping TypeName="oposeeDbModel.Question">
-        <MappingFragment StoreEntitySet="Question">
-          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
-          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
-          <ScalarProperty Name="HashTags" ColumnName="HashTags" />
-          <ScalarProperty Name="OwnerUserID" ColumnName="OwnerUserID" />
-          <ScalarProperty Name="PostQuestion" ColumnName="PostQuestion" />
           <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -82,6 +72,20 @@
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="UserName" ColumnName="UserName" />
           <ScalarProperty Name="UserID" ColumnName="UserID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Questions">
+      <EntityTypeMapping TypeName="oposeeDbModel.Question">
+        <MappingFragment StoreEntitySet="Question">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreationDate" ColumnName="CreationDate" />
+          <ScalarProperty Name="HashTags" ColumnName="HashTags" />
+          <ScalarProperty Name="TaggedUser" ColumnName="TaggedUser" />
+          <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+          <ScalarProperty Name="OwnerUserID" ColumnName="OwnerUserID" />
+          <ScalarProperty Name="PostQuestion" ColumnName="PostQuestion" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

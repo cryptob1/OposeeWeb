@@ -18,6 +18,7 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="CommentedUserId" Type="int" Nullable="false" />
     <Property Name="CommentId" Type="int" Nullable="false" />
+    <Property Name="questId" Type="int" />
     <Property Name="Like" Type="bit" />
     <Property Name="Dislike" Type="bit" />
     <Property Name="Comment" Type="bit" />
@@ -33,6 +34,7 @@
     <Property Name="QuestId" Type="int" Nullable="false" />
     <Property Name="Comment" Type="varchar(max)" />
     <Property Name="CommentedUserId" Type="int" Nullable="false" />
+    <Property Name="IsAgree" Type="bit" />
     <Property Name="Likes" Type="int" />
     <Property Name="Dislikes" Type="int" />
     <Property Name="CreationDate" Type="datetime" />
@@ -45,6 +47,8 @@
     <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="PostQuestion" Type="nvarchar(max)" />
     <Property Name="OwnerUserID" Type="int" Nullable="false" />
+    <Property Name="IsDeleted" Type="bit" />
+    <Property Name="TaggedUser" Type="varchar(max)" />
     <Property Name="HashTags" Type="varchar" MaxLength="1000" />
     <Property Name="CreationDate" Type="datetime" />
     <Property Name="ModifiedDate" Type="datetime" />
@@ -68,6 +72,7 @@
     <Property Name="LastName" Type="varchar" MaxLength="20" />
     <Property Name="Email" Type="varchar" MaxLength="100" />
     <Property Name="Password" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsAdmin" Type="bit" />
     <Property Name="SocialID" Type="varchar" MaxLength="50" />
     <Property Name="SocialType" Type="varchar" MaxLength="50" />
     <Property Name="ImageURL" Type="varchar" MaxLength="300" />

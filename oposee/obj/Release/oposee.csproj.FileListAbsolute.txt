@@ -118,3 +118,17 @@ D:\oposee\oposee\oposee\obj\Release\oposee.csproj.CoreCompileInputs.cache
 D:\oposee\oposee\oposee\obj\Release\oposee.csproj.CopyComplete
 D:\oposee\oposee\oposee\obj\Release\oposee.dll
 D:\oposee\oposee\oposee\obj\Release\oposee.pdb
+D:\oposee\oposee\oposee\bin\Google.Apis.Auth.dll
+D:\oposee\oposee\oposee\bin\Google.Apis.Auth.PlatformServices.dll
+D:\oposee\oposee\oposee\bin\Google.Apis.Core.dll
+D:\oposee\oposee\oposee\bin\Google.Apis.dll
+D:\oposee\oposee\oposee\bin\Google.Apis.PlatformServices.dll
+D:\oposee\oposee\oposee\bin\System.Net.Http.dll
+D:\oposee\oposee\oposee\bin\System.Security.Cryptography.Algorithms.dll
+D:\oposee\oposee\oposee\bin\System.Security.Cryptography.Encoding.dll
+D:\oposee\oposee\oposee\bin\System.Security.Cryptography.Primitives.dll
+D:\oposee\oposee\oposee\bin\System.Security.Cryptography.X509Certificates.dll
+D:\oposee\oposee\oposee\bin\Google.Apis.xml
+D:\oposee\oposee\oposee\bin\Google.Apis.Auth.xml
+D:\oposee\oposee\oposee\bin\Google.Apis.Core.xml
+D:\oposee\oposee\oposee\bin\MvcPaging.dll

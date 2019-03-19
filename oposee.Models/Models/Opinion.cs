@@ -22,5 +22,6 @@ namespace oposee.Models.Models
         public Nullable<int> Dislikes { get; set; }
         public Nullable<System.DateTime> CreationDate { get; set; }
         public Nullable<System.DateTime> ModifiedDate { get; set; }
+        public Nullable<bool> IsAgree { get; set; }
     }
 }

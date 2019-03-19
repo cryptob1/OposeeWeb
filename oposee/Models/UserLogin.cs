@@ -19,4 +19,19 @@ namespace oposee.Models
         [Display(Name = "Remember Me")]
         public bool RememberMe { get; set; }
     }
+    public class UserLoginWeb
+    {
+       
+        public int Id { get; set; }
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Email required")]
+        public string Email { get; set; }
+
+        [Required(AllowEmptyStrings = false, ErrorMessage = "Password required")]
+        [DataType(DataType.Password)]
+        public string Password { get; set; }
+        public string Token { get; set; }
+
+        //[Display(Name = "Remember Me")]
+        //public bool RememberMe { get; set; }
+    }
 }

@@ -11,6 +11,11 @@ namespace oposee.Enums
         InActive,
         Deleted
     }
+    public enum OpinionAgreeStatus
+    {
+        No,
+        Yes
+    }
 
     public enum ThirdPartyType
     {

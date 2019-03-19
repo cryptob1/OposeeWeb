@@ -4,9 +4,9 @@
     <EntitySet Name="BookMarks" EntityType="oposeeDbModel.BookMark" />
     <EntitySet Name="Notifications" EntityType="oposeeDbModel.Notification" />
     <EntitySet Name="Opinions" EntityType="oposeeDbModel.Opinion" />
-    <EntitySet Name="Questions" EntityType="oposeeDbModel.Question" />
     <EntitySet Name="Tokens" EntityType="oposeeDbModel.Token" />
     <EntitySet Name="Users" EntityType="oposeeDbModel.User" />
+    <EntitySet Name="Questions" EntityType="oposeeDbModel.Question" />
   </EntityContainer>
   <EntityType Name="BookMark">
     <Key>
@@ -32,6 +32,7 @@
     <Property Name="SendNotification" Type="Boolean" />
     <Property Name="CreationDate" Type="DateTime" Precision="3" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="questId" Type="Int32" />
   </EntityType>
   <EntityType Name="Opinion">
     <Key>
@@ -45,17 +46,7 @@
     <Property Name="Dislikes" Type="Int32" />
     <Property Name="CreationDate" Type="DateTime" Precision="3" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
-  </EntityType>
-  <EntityType Name="Question">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="PostQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
-    <Property Name="OwnerUserID" Type="Int32" Nullable="false" />
-    <Property Name="HashTags" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="CreationDate" Type="DateTime" Precision="3" />
-    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsAgree" Type="Boolean" />
   </EntityType>
   <EntityType Name="Token">
     <Key>
@@ -84,5 +75,19 @@
     <Property Name="RecordStatus" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
     <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="IsAdmin" Type="Boolean" />
+  </EntityType>
+  <EntityType Name="Question">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="PostQuestion" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="OwnerUserID" Type="Int32" Nullable="false" />
+    <Property Name="IsDeleted" Type="Boolean" />
+    <Property Name="TaggedUser" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="HashTags" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="CreationDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
   </EntityType>
 </Schema>

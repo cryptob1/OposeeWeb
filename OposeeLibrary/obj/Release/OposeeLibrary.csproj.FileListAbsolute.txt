@@ -6,3 +6,4 @@ D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.csproj.CoreCompileInput
 D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.csproj.CopyComplete
 D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.dll
 D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.pdb
+D:\oposee\oposee\OposeeLibrary\obj\Release\OposeeLibrary.csprojAssemblyReference.cache

@@ -5,13 +5,14 @@
     <meta name="viewport" content="width=device-width" />
     <title>@ViewBag.Title</title>
     <link href="~/Content/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
     @Styles.Render("~/Content/css/sb-admin-2.css")
     @Scripts.Render("~/bundles/modernizr")
     <link href="https://gitcdn.github.io/bootstrap-toggle/2.2.2/css/bootstrap-toggle.min.css" rel="stylesheet">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
 
-   
+
 </head>
 <body id="page-top">
     <div id="wrapper">
@@ -122,7 +123,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>
-                                <img class="img-profile rounded-circle" src="https://source.unsplash.com/QAB-WJcbgJk/60x60">
+                                <i class="fas fa-user"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -201,6 +202,55 @@
 
     <script src="https://gitcdn.github.io/bootstrap-toggle/2.2.2/js/bootstrap-toggle.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+    
+        <script>
+            function previewImage(event) {
+                debugger
+            // Get a reference to the image element
+            var image = document.querySelector("#instrumentImage");
+                // Set its source to the file in the <input type=file element
+                image.src = URL.createObjectURL(event.target.files[0]);
+        };
+        // delete Link
+            $(document).ready(function () {
+                $('.delete-link').click(function () {
+                    debugger;
+                    var deleteLinkObj = $(this);  //for future use
+
+                    $("#delete-dialog").dialog({
+                        title: "Confirmation",
+                        buttons: {
+                            Continue: function () {
+                                debugger;
+                                $.post(deleteLinkObj[0].href, function (data) {  //Post to action
+                                    if (data.Status == 'true') {
+                                        var tr = deleteLinkObj.parents('tr:first');
+                                        tr.hide('fast'); //Hide Row
+                                    }
+                                    else {
+                                        //(optional) Display Error
+                                    }
+                                });
+                                $(this).dialog('close');
+                            },
+                            Close: function () {
+                                $(this).dialog('close');
+                            }
+                        },
+                        dialogClass: 'dialog_css',
+                        width: 400,
+                        closeOnEscape: false,
+                        draggable: false,
+                        resizable: false,
+                        modal: true
+                    });
+                    return false; // prevents the default behaviour
+
+                });
+            });
+    </script>
+        
     @RenderSection("scripts", required: false)
 </body>
 </html>

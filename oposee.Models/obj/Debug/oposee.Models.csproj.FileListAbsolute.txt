@@ -56,8 +56,8 @@ D:\oposee\oposee\oposee.Models\bin\Microsoft.CodeDom.Providers.DotNetCompilerPla
 D:\oposee\oposee\oposee.Models\bin\EntityFramework.xml
 D:\oposee\oposee\oposee.Models\bin\EntityFramework.SqlServer.xml
 D:\oposee\oposee\oposee.Models\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
-D:\oposee\oposee\oposee.Models\obj\Debug\oposee.Models.csprojAssemblyReference.cache
 D:\oposee\oposee\oposee.Models\obj\Debug\oposee.Models.csproj.CoreCompileInputs.cache
 D:\oposee\oposee\oposee.Models\obj\Debug\oposee.Models.csproj.CopyComplete
 D:\oposee\oposee\oposee.Models\obj\Debug\oposee.Models.dll
 D:\oposee\oposee\oposee.Models\obj\Debug\oposee.Models.pdb
+D:\oposee\oposee\oposee.Models\obj\Debug\oposee.Models.csprojAssemblyReference.cache

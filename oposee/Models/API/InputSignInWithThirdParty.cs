@@ -1,9 +1,13 @@
 ﻿using oposee.Enums;
+using OposeeLibrary.Utilities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Configuration;
+using System.IO;
 using System.Linq;
 using System.Web;
+using System.Web.Configuration;
 
 namespace oposee.Models.API
 {
@@ -31,4 +35,15 @@ namespace oposee.Models.API
 
         public System.DateTime CreatedDate { get; set; }
     }
+    public class ImageResponse
+    {
+        public string ThumbnailURL { get; set; }
+        public string ImageURL { get; set; }
+
+        public string BannerImage_URL { get; set; }
+
+        public bool IsSuccess { get; set; }
+        public string ResponseMessage { get; set; }
+    }
+    
 }
