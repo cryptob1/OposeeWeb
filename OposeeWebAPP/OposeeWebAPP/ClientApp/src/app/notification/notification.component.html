@@ -1,0 +1,95 @@
+
+<div class="">
+  
+
+  <section class="section_second">
+    <div class="container">
+      <div class="cover_heading">
+        <h2>Notifications</h2>
+      </div>
+      <div class="cover_sections">
+        <div class="col-sm-4">
+          <div class="cover_notification" style="display:none">
+            <h3>Trends For You <a href="#"></a></h3>
+            <span><a href="#">#blast</a></span>
+
+            <span><a href="#">c#</a></span>
+            <span><a href="#">#c sharp</a><p></p></span>
+            <span><a href="#"># pakistan</a><p></p></span>
+            <span><a href="#"># dotnet</a><p></p></span>
+            <span><a href="#"># pulwama</a><p></p></span>
+            <span><a href="#"># kashmir</a><p></p></span>
+
+          </div>
+        </div>
+
+        <div class="col-sm-12">
+
+
+          <div class="cover_right" *ngFor="let temp of notification">
+            <span class="profile"><img src="{{temp.Image}}" alt="user">{{temp.UserName}}</span>
+            <span class="cover_ntfctn_border">
+              <span class="name"><b>{{temp.Username}}</b><span class="text_sftr_star">{{temp.Username}}</span></span>
+
+              <strong><a [routerLink]="['/questiondetail/', temp.QuestionId]">{{temp.Message}}</a></strong>
+            </span>
+            <!--<span>{{ temp.CreationDate | date:'medium' }}</span>-->
+          </div>
+
+
+
+
+        </div>
+      </div>
+      <div class="navigation_cover">
+
+        <div class="container">
+          <div class="text-center" style="cursor:pointer">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(  pager.currentPage - 1)">Previous</a>
+              </li>
+              <li *ngFor="let page of pager.pages;index as i" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage( page)">{{page}}</a>
+              </li>
+              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(  pager.currentPage + 1)">Next</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </section>
+
+
+
+
+
+  <footer style="margin-top:225px">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul>
+            <li><a href="#">All Questions</a></li>
+            <li><a href="#">Post Questions</a></li>
+            <li><a href="#">All Questions</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copywrite"><p>Copywrite@2019</p></div>
+  </footer>
+
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="js/bootstrap.min.js"></script>
+</div>
+

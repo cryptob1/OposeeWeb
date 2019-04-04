@@ -179,7 +179,12 @@ namespace oposee.Controllers.API
                             strIamgeURLfordb = strThumbnailImage;
                         }
                     }
-                    else { entity.ImageURL = _SiteURL + "/ProfileImage/oposee-profile.png"; }
+                    else
+                    {
+
+                        entity.ImageURL = _SiteURL + "/ProfileImage/oposee-profile.png";
+                        strIamgeURLfordb = entity.ImageURL;
+                    }
                     entity.ImageURL = strIamgeURLfordb;
                     db.Users.Add(entity);
                     db.SaveChanges();
@@ -787,7 +792,7 @@ namespace oposee.Controllers.API
                             string finalMessage = GenerateTagsForQuestion(notification.Like, notification.Dislike, false, user.FirstName + " " + user.LastName);
 
                             pNoty.SendNotification_Android(questOwner.DeviceToken, finalMessage, "QD", questId.ToString());
-                           
+
                             //***** Notification to Tagged Users
                             string taggedUser = ques.TaggedUser;
 
@@ -1368,7 +1373,7 @@ namespace oposee.Controllers.API
                 questionDetail.PostQuestionDetail = (from q in db.Questions
                                                      join b in db.BookMarks on q.Id equals b.QuestionId
                                                      join u in db.Users on b.UserId equals u.UserID
-                                                     where q.IsDeleted == false && u.UserID == userId
+                                                     where q.IsDeleted == false && u.UserID == userId && b.IsBookmark == true
                                                      select new PostQuestionDetail
                                                      {
                                                          Id = q.Id,

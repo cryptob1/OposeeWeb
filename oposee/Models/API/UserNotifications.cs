@@ -24,6 +24,8 @@ namespace oposee.Models.API
         public string Message { get; set; }
         public DateTime? CreationDate { get; set; }
         public DateTime? ModifiedDate { get; set; }
+        public int TotalRecordcount { get; set; }
+        public int NotificationId { get; set; }
 
     }
     public class UserProfile

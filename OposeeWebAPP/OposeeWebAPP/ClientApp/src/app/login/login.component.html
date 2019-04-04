@@ -1,0 +1,90 @@
+
+
+<link rel="icon" href="../../assets/images/fav.ico" />
+<title>Opozee</title>
+<label id="loginwithTwitter" (click)="loginwithTwitteSecond($event)" style="display:none"></label>
+<div id="login">
+
+  <div class="creds p-4">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-12 col-sm-12">
+          <div class="login_data bg-white text-center rounded p-md-4  pt-4">
+            <div class="logo_main text-center">
+              <img src="../../assets/images/logo-brain2.png" alt="main-logo">
+            </div>
+            <label (click)="socialSignIn('facebook')" style="display:none"></label>
+            <div class="login_form">
+              <form class="w-md-75 mx-auto px-sm-3 my-3 mt-4" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="access_social">
+                  <a class="facebook btns d-block text-left color-white rounded p-2 mb-2" style="cursor:pointer" (click)="socialSignIn('facebook')"><i class="fa fa-facebook  ml-2"></i>Login With Facebook</a>
+                  <a class="google btns d-block text-left color-white rounded p-2 mb-2" style="cursor:pointer" (click)="socialSignIn('google')"><i class="fa fa-google-plus  ml-2"></i>Login With Google</a>
+                  <a class="twitter btns d-block text-left color-white rounded p-2 mb-2 twitter-button" style="cursor:pointer" onclick="loginwithTwitter()"><i class="fa fa-twitter ml-2"></i>Login With Twitter</a>
+                  <!--<a class="twitter btns d-block text-left color-white rounded p-2 mb-2 twitter-button" style="cursor:pointer" (click)="loginwithTwitter('google')"><i class="fa fa-twitter ml-2" ></i>Login With Twitter</a>-->
+                </div>
+
+
+                <div class="divider"><span>Or</span></div>
+
+                <div class="main_fields text-left">
+
+                  <div class="form-group">
+                    <label for="username">Email</label>
+                    <input type="text" formControlName="email" class="form-control form-control pl-5" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                    <i class="fa fa-inbox"></i>
+                    <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                      <div *ngIf="f.email.errors.required">Email is required</div>
+                      <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
+                    </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" formControlName="password" class="form-control form-control pl-5" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                    <i class="fa fa-lock"></i>
+                    <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                      <div *ngIf="f.password.errors.required">Password is required</div>
+                    </div>
+                  </div>
+                  <div class="clearfix">
+                    <div class="checkboxes float-left">
+                      <label class="container_check font-3">
+                        <input type="checkbox">&nbsp;&nbsp;Remember Me
+
+                        <span class="checkmark"></span>
+                      </label>
+
+                    </div>
+                    <div class="forget float-right">
+                      <a class="font-3" href="#">Forget Password?</a>
+
+                    </div>
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button [disabled]="loading" class="btns bg-primary border-0 w-100 rounded color-white mt-3">Login</button>
+                  <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                  New to opozee? <a [routerLink]="['/register']" class="btn btn-link">Sign up!</a>
+                </div>
+
+
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>
+
+

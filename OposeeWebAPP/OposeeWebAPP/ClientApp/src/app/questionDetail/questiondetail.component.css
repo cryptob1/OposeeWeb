@@ -1,0 +1,335 @@
+/*--------------------quistion-detail----------------------*/
+
+.cover_profile, .cover_profile .profile_left {
+  width: 100%;
+  float: left;
+}
+
+  .cover_profile .profile_left {
+    width: 100%;
+    float: left;
+    background-color: #f2f2f2;
+    padding: 25px;
+  }
+span.profile_left img {
+  width: 25px;
+}
+
+    .cover_profile .profile_left .img {
+      float: left;
+      width: 50px;
+      border: 1px solid #333;
+      border-radius: 50%;
+      height: 50px;
+    }
+
+      .cover_profile .profile_left .img img {
+        width: 100%;
+        padding: 11px;
+      }
+
+.text_profile {
+  margin-left: 15px;
+  float: left;
+  margin-top: 5px;
+  font-weight: 700;
+}
+span.profile_left p {
+  font-size: 16px;
+  font-weight: 700;
+  margin-top: 18px;
+  margin-bottom: 40px;
+  text-align:left;
+}
+.cover_profile p {
+  text-align: left;
+  word-break: break-word;
+  font-size: 17px;
+  font-weight: 400;
+}
+  .text_profile .user_123 {
+    float: left;
+    width: 100%;
+    font-weight: 400;
+  }
+
+.time {
+  float: right;
+  font-size: 13px;
+}
+
+.cover_profile .profile_left p {
+  float: left;
+  width: 100%;
+}
+
+.opiniuns {
+  width: 100%;
+  float: left;
+}
+
+  .opiniuns span {
+    float: left;
+    margin-right: 0px;
+    width: 10%;
+    text-align: left;
+    font-weight: 600;
+  }
+
+  .opiniuns .no {
+    width: 100%;
+    float: left;
+    height: 5px;
+    background-color: #ddd;
+    border-radius: 3px;
+    position: relative;
+    margin-top: 25px;
+  }
+
+    .opiniuns .no .yes {
+      position: absolute;
+      right: 0px;
+      top: -28px;
+      margin: 0px;
+      color: #02bd0f;
+    }
+
+.anlysis_slider {
+  width: 90%;
+  height: 5px;
+  float: left;
+  background-image: url('../../assets/images/redline.png');
+  border-radius: 5px;
+  position: relative;
+  margin-top: 11px;
+}
+
+  .anlysis_slider .color {
+    float: left;
+    height: 5px;
+    background: rgb(12,130,220);
+    background-image: url('../../assets/images/greenline.png');
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    border-radius: 5px;
+  }
+
+  .anlysis_slider .percentage {
+    position: absolute;
+    right: 0px;
+    width: auto;
+    top: -29px;
+    padding: 3px 3px;
+    font-size: 13px;
+    float: left;
+    background: #902424;
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#0c82dc', endColorstr='#10b1a9',GradientType=1 );
+    color: #fff;
+    font-weight: 500;
+    border-radius: 3px;
+  }
+  .anlysis_slider .percentage_yes {
+    position: absolute;
+    left: 0px;
+    width: auto;
+    top: -29px;
+    padding: 3px 3px;
+    font-size: 13px;
+    float: left;
+    background: #528f24;
+    filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#0c82dc', endColorstr='#10b1a9',GradientType=1 );
+    color: #fff;
+    font-weight: 500;
+    border-radius: 3px;
+  }
+
+  .anlysis_slider .percentage:before {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #902424;
+    float: left;
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    margin-left: -4px;
+  }
+  .anlysis_slider .percentage_yes:before {
+    width: 0;
+    height: 0;
+    border-left: 4px solid transparent;
+    border-right: 4px solid transparent;
+    border-top: 5px solid #528f24;
+    float: left;
+    content: "";
+    position: absolute;
+    top: 23px;
+    left: 50%;
+    margin-left: -4px;
+  }
+
+.profile_bottom {
+  width: 100%;
+  float: left;
+  margin-top: 0px;
+}
+.cover_yes_no_feedback {
+  margin-top: 35px !important;
+  width: 100%;
+  float: left;
+  padding: 24px 15px;
+  box-shadow: 0px 0px 2px rgba(0, 0, 0, 0.2);
+}
+.right_no {
+  float: right;
+}
+
+.user_left {
+  width: 50%;
+  float: left;
+}
+
+  .user_left img {
+    width: 23px;
+    float: left;
+    margin-right: 10px;
+    border: 1px solid #333;
+    padding: 0px;
+    border-radius: 50%;
+  }
+
+  .user_left span {
+    float: left;
+    margin-top: 0px;
+    font-size: 14px;
+  }
+
+.profile_bottom_cover .like_images {
+  width: 30%;
+  float: left;
+}
+
+  .profile_bottom_cover .like_images span {
+    width: 50%;
+    float: left;
+    text-align: left;
+  }
+.profile_bottom_cover .date_like {
+  float: left;
+  width: 20%;
+}
+  .profile_bottom_cover .date_like i {
+    float: right;
+    font-size: 13px;
+  }
+
+    .profile_bottom_cover .like_images span img {
+      width: 20px;
+      margin-right: 7px;
+      float: left;
+    }
+.cover_buttons {
+  width: 1170px;
+  float: left;
+  text-align: center;
+  padding: 12px 0px;
+  position: fixed;
+  left: 9%;
+  bottom: 0px;
+  background-color: rgba(255, 255, 255, 0.93);
+  max-width: 82%;
+  box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.2);
+}
+  .cover_buttons a {
+    display: inline-block;
+    width: 100px;
+    border: 2px solid rgb(12,130,220);
+    padding: 3px 0px;
+    margin: 0px 10px;
+    border-radius: 3px;
+    color: rgb(12,130,220);
+    font-size: 13px;
+  }
+  .cover_buttons .comment_box {
+    width: 100%;
+    text-align: center;
+    left: 0px;
+    position: relative;
+    display: inline-block;
+    margin-top: 15px;
+  }
+    .cover_buttons a:hover {
+      background-color: rgb(12,130,220);
+      color: #fff !important;
+    }
+.comment_box, .comment_box textarea {
+  width: 100%;
+  float: none;
+}
+.cover_buttons .comment_box textarea {
+  float: left;
+  width: 70%;
+  margin-left: 5%;
+}
+  .comment_box textarea {
+    border: 1px solid #ddd;
+    line-height: 18px;
+    padding: 8px 15px;
+    border-radius: 4px;
+    font-size: 13px;
+    height: 50px;
+  }
+.comment_box a {
+  width: 10%;
+  float: left;
+  padding: 6px 0px;
+  border: 2px solid rgb(12,130,220);
+  margin: 6px 0px 0px 0px;
+  color: rgb(12,130,220);
+  border-radius: 3px;
+  margin-left: 1%;
+}
+    .comment_box a:hover {
+      background-color: rgb(12,130,220);
+      color: #fff !important;
+    }
+.cover_hello {
+  width: 90%;
+  float: left;
+  position: fixed;
+  left: 5%;
+  bottom: 35px;
+}
+  .cover_hello i {
+    float: right;
+    padding: 15px 16px;
+    background-color: #1587dd;
+    color: #fff;
+    border-radius: 100%;
+    box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.4);
+    cursor: pointer;
+  }
+
+
+@media screen and (max-width: 767px) {
+
+  .cover_buttons .comment_box textarea {
+    width: 100%;
+    margin-left: 0%;
+  }
+  .cover_buttons .comment_box {
+    width: 80%;
+  }
+  .comment_box[_ngcontent-c2] a[_ngcontent-c2] {
+    width: 100px;
+    margin: 15px 0px 0px 0px;
+    margin-left: 0%;
+    margin-right: 7px;
+  }
+
+
+
+}

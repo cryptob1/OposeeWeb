@@ -1,0 +1,22 @@
+span.tagusers {
+  width: 100%;
+  float: left;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  padding: 0px 15px;
+  position: relative;
+}
+  span.tagusers a {
+    width: 100%;
+    float: left;
+    font-weight: 600;
+    padding: 6px 0px 6px 20px;
+  }
+  span.tagusers img {
+    position: absolute;
+    width: 20px;
+    float: left;
+    top: 7px;
+    left: 10px;
+  }
+

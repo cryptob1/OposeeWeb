@@ -1,0 +1,203 @@
+
+/*---------------------------profile--------------------------*/
+.cover_profile {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+
+.profile_div {
+  width: 150px;
+  margin: 0 auto;
+  height: 150px;
+  background: rgb(12,130,220);
+  background: -moz-linear-gradient(45deg, rgba(12,130,220,1) 0%, rgba(16,177,169,1) 65%);
+  background: -webkit-linear-gradient(45deg, rgba(12,130,220,1) 0%,rgba(16,177,169,1) 65%);
+  background: linear-gradient(45deg, rgba(12,130,220,1) 0%,rgba(16,177,169,1) 65%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0c82dc', endColorstr='#10b1a9',GradientType=1 );
+  border-radius: 100%;
+  margin-bottom: 80px;
+}
+
+.profile_div .image_user {
+  width: 150px;
+  height: 150px;
+  margin: 0px auto;
+  text-align: center;
+  vertical-align: middle;
+  position: relative;
+  border-radius: 100%;
+  display: inline-block;
+  box-shadow: 2px -1px 2px rgba(0, 0, 0, 0.3);
+}
+  .profile_div .image_user img {
+    width: 150px !important;
+    border-radius: 100%;
+    height: 150px;
+    margin: 0px !important;
+  }
+span.upload_button {
+  width: 100%;
+  float: left;
+  text-align: center;
+  margin-top: 25px;
+}
+  span.upload_button input {
+    display: inline-block;
+    float: none;
+  }
+  span.upload_button .btn-large.btn-submit {
+    float: left;
+    padding: 6px 13px;
+    margin-top: 13px;
+    background-color: #337ab7;
+    border: none;
+    color: #fff;
+    border-radius: 3px;
+  }
+
+
+.profile_div .image_user .edit {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #0c83db;
+  border-radius: 100%;
+  right: 11px;
+  top: 0px;
+}
+
+.profile_div .image_user .edit i {
+  color: #fff;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.profile_div h2 {
+  width: 150px;
+  float: left;
+  text-align: center;
+  color: #333;
+  text-transform: uppercase;
+  font-size: 20px;
+  letter-spacing: 1px;
+}
+
+.tocken {
+  width: 100%;
+  float: left;
+  margin-bottom: 27px;
+  border: 2px solid #ddd;
+  border-radius: 4px;
+  padding: 24px;
+  text-align: left;
+}
+
+.tocken img {
+  width: 70px;
+  margin-right: 25px;
+}
+
+.profile_images {
+  width: 100%;
+  float: left;
+}
+
+.profile_images h3 {
+  margin-bottom: 40px;
+}
+
+.profile_images img {
+  width: 250px;
+  display: inline-block;
+  margin-bottom: 60px;
+  border-radius: 5px;
+}
+
+
+
+/*-------------------Edit Profile---------------------*/
+.cover_profile, .inputs_fields form {
+  width: 100%;
+  float: left;
+  text-align: center;
+  
+}
+
+.profile_div .image_user img {
+  width: 90px;
+}
+
+.profile_div .image_user .edit {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  text-align: center;
+  background-color: #0c83db;
+  border-radius: 100%;
+  right: 11px;
+  top: 0px;
+}
+
+.profile_div .image_user .edit i {
+  color: #fff;
+  line-height: 40px;
+  font-size: 16px;
+}
+
+.inputs_fields {
+  width: 100%;
+  float: left;
+  margin-bottom: 60px;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+  padding: 22px 10px;
+  margin-top: 45px;
+}
+
+.inputs_fields {
+  width: 100%;
+  float: left;
+  margin-bottom: 60px;
+}
+
+.inputs_fields form label {
+  width: 100%;
+  float: left;
+  text-align: left;
+  margin-bottom: 15px;
+}
+
+.inputs_fields form label input {
+  width: 100%;
+  float: left;
+  padding: 8px 15px;
+  border-radius: 4px;
+  background-color: #f2f2f2;
+  border: none;
+  margin-top: 6px;
+  font-weight: 400;
+}
+
+.inputs_fields form a {
+  display: inline-block;
+  margin-top: 15px;
+  padding: 10px 50px;
+  border-radius: 4px;
+  background: rgb(12,130,220);
+  background: -moz-linear-gradient(45deg, rgba(12,130,220,1) 0%, rgba(16,177,169,1) 65%);
+  background: -webkit-linear-gradient(45deg, rgba(12,130,220,1) 0%,rgba(16,177,169,1) 65%);
+  background: linear-gradient(45deg, rgba(12,130,220,1) 0%,rgba(16,177,169,1) 65%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0c82dc', endColorstr='#10b1a9',GradientType=1 );
+  color: #fff;
+  font-size: 18px;
+  text-transform: uppercase;
+  margin-top: 35px;
+}
+
+  .inputs_fields .form-group button {
+    border: none;
+    padding: 9px 24px;
+    margin-top: 15px;
+    border-radius: 3px;
+  }

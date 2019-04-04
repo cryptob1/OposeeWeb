@@ -30,7 +30,7 @@ namespace oposee.Models
         [DataType(DataType.Password)]
         public string Password { get; set; }
         public string Token { get; set; }
-
+        public string ImageURL { get; set; }
         //[Display(Name = "Remember Me")]
         //public bool RememberMe { get; set; }
     }

@@ -1,0 +1,36 @@
+header {
+  position: relative;
+}
+nav.navbar.navbar-default.navbar-fixed-top {
+  position: relative !important;
+  margin: 0px;
+}
+.inner_pages header {
+  position: fixed;
+  min-height: 130px;
+  background: #333;
+  width: 100%;
+  z-index: 9;
+  background-image: url(/assets/images/header_bk.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+a.navbar-brand.logo {
+  max-width: 55px !important;
+  padding: 9px 0px !important;
+  
+}
+.dropdown a img {
+  width: 40px !important;
+  height: 40px !important;
+  border-radius: 100% !important;
+}
+
+.inner_pages header {
+  min-height: 100px !important;
+}
+header .dropdown a {
+  padding: 0px !important;
+}
+
+

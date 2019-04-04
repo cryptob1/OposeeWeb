@@ -1,0 +1,42 @@
+<div class="inner_pages">
+  <header>
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand logo" href="#"><img src="../../assets/images/logo-brain-white.png" class="img-responsive"></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li><a [routerLink]="['/']">Home</a></li>
+            <li><a [routerLink]="['/questionlisting','']">All Questions{{loginData.isAuthenticateUserId}} </a></li>
+            <li><a [routerLink]="['/postquestion',0]">Post Questions</a></li>
+            <li *ngIf="loginData.isAuthenticateUserId == 0 || loginData  == 0"><a [routerLink]="['/login']">Login</a></li>
+            <li class="notification" *ngIf="loginData.Id > 0"><a [routerLink]="['/notifications']">Notifications<span class="bell-icon"><i class="fa fa-bell" aria-hidden="true"></i><span></span></span></a></li>
+            <li *ngIf="isAuthenticateUserId"><a [routerLink]="['/bookmark',0]">Bookmarks</a></li>
+            <li>
+              <div class="dropdown" *ngIf="loginData.Id > 0" style="cursor:pointer">
+                <a class="profile_head btn btn-primary dropdown-toggle" data-toggle="dropdown"><img src="{{loginData.ImageURL}}"></a>
+                <div class="dropdown-menu" >
+                  <a class="dropdown-item" [routerLink]="['/profile/', loginData.Id]">Profile</a>
+                  <a class="dropdown-item" style="cursor:pointer !important" (click)="logout()">logOut</a>
+                </div>
+              </div>
+            </li>
+          </ul>
+         
+        </div>
+        
+
+
+      </div>
+    </nav>
+  </header>
+</div>

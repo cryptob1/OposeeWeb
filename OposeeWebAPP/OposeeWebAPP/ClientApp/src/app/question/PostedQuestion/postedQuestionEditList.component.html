@@ -1,0 +1,100 @@
+
+<div class="inner_pages">
+  <section class="section_second">
+    <div class="container">
+      <div class="cover_heading">
+        <h2>User Post</h2>
+
+      </div>
+
+      <div class="scroller_cover" *ngIf="!isRecordLoaded">
+        <img src="../../../assets/images/reordloaderImages.gif" />
+      </div>
+
+      <div *ngIf="PostQuestionDetailList.length == 0 && isNotRecordLoaded">No record found</div>
+      <div class="row">
+        <div class="col-sm-12">
+          <ul>
+
+            <li>
+
+
+              <div *ngIf="PostQuestionDetailList.length > 0">
+
+                <div class="cover_questions image_question" style="cursor:pointer" *ngFor="let temp of PostQuestionDetailList">
+                  <div class="user_left">
+                    <span class="icon"><img src="{{temp.UserImage}}"></span>
+                    <span class="username">
+                      {{temp.Name}}
+                    </span>
+
+                  </div>
+                  <div class="user_edit-right">
+                    <a [routerLink]="['/editpostedquestion/',temp.Id]" ><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    <a  style="cursor:pointer !important" (click)="deleteQuestion(temp.Id)"><i class="fa fa-trash-o" aria-hidden="true" ></i></a>
+                    <!--<a href="#"><i class="fa fa-floppy-o" aria-hidden="true"></i></a>-->
+                  </div>
+                  <!--<div class="user_right"><div class="date"><i>{{temp.CreationDate | date:'medium'}}</i></div></div>-->
+                  <strong><a>{{temp.Question}}</a></strong>
+                  <div class="cover_analysis">
+                    <div class="left">
+                      <span>Opinion</span>
+                      <div class="anlysis_slider">
+                        <span [style.width.%]="((temp.YesCount) / (temp.YesCount + temp.NoCount)*100) | number:'1.0-0'" class="color yes_div"></span>
+                        <span class="percentage" *ngIf="temp.NoCount > 0">NO : {{((temp.NoCount) / (temp.YesCount + temp.NoCount)*100) | number:'1.0-0'}} %</span>
+
+                        <span class="percentage_yes" *ngIf="temp.YesCount > 0">Yes : {{((temp.YesCount) / (temp.YesCount + temp.NoCount)*100) | number:'1.0-0'}}  %</span>
+
+                        <div *ngIf="temp.YesCount == 0 && temp.NoCount ==0">
+                          <span class="percentage">NO : 0 %</span>
+                          <span class="percentage_yes">Yes : 0 %</span>
+                          <span class="empty_space"></span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+
+                </div>
+
+              </div>
+
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+      <div class="navigation_cover">
+
+        <div class="container">
+          <div class="text-center" style="cursor:pointer">
+            <ul *ngIf="pager.pages && pager.pages.length" class="pagination">
+              <li [ngClass]="{disabled:pager.currentPage === 1}">
+                <a (click)="setPage(  pager.currentPage - 1)">Previous</a>
+              </li>
+              <li *ngFor="let page of pager.pages;index as i" [ngClass]="{active:pager.currentPage === page}">
+                <a (click)="setPage( page)">{{page}}</a>
+              </li>
+              <li [ngClass]="{disabled:pager.currentPage === pager.totalPages}">
+                <a (click)="setPage(  pager.currentPage + 1)">Next</a>
+              </li>
+
+            </ul>
+          </div>
+        </div>
+
+
+      </div>
+
+    </div>
+  </section>
+  
+
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="js/bootstrap.min.js"></script>
+
+</div>
+

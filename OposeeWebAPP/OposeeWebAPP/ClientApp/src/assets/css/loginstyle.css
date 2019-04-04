@@ -1,0 +1,240 @@
+/*fonts*/
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+/*end of fonts*/
+
+/*global css*/
+* {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+}
+
+ul li {
+  list-style: none;
+}
+
+a, a:hover {
+  text-decoration: none;
+}
+
+.color-white {
+  color: #fff !important;
+}
+
+.font-1 {
+  font-size: 0.5rem;
+}
+
+.font-1 {
+  font-size: 0.5rem;
+}
+
+.font-2 {
+  font-size: 0.75rem;
+}
+
+.font-3 {
+  font-size: 0.9rem;
+}
+
+.font-4 {
+  font-size: 1rem;
+}
+
+.font-5 {
+  font-size: 1.3rem;
+}
+
+.font-6 {
+  font-size: 1.5rem;
+}
+
+.btns {
+  box-shadow: inset 0 0 91px transparent;
+}
+
+  .btns:hover {
+    box-shadow: inset 0 0 91px rgba(0,0,0,0.17);
+  }
+
+
+
+/*end of global css*/
+
+
+/*Login page css*/
+#login {
+  background-image: url(../images/logi.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  min-height: 100vh;
+  position: relative;
+  /*padding-top: 130px;*/
+}
+.jumbotron {
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+  #login::before {
+    /*background: rgba(0,0,0,0.8);*/
+    position: absolute;
+    content: '';
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+  }
+
+.logo_main img {
+  max-width: 80px;
+  margin: 0 auto;
+}
+
+.access_social a.facebook {
+  background: #3B5998;
+}
+
+.access_social a.google {
+  background: #DC4E41;
+}
+
+.access_social a.twitter {
+  background: #1DA1F2;
+}
+
+.divider {
+  height: 1px;
+  margin: 30px 0 20px;
+  background-color: #e1e8ed;
+}
+
+  .divider span {
+    position: relative;
+    top: -20px;
+    background-color: #fff;
+    display: inline-block;
+    padding: 10px;
+    font-style: italic;
+  }
+
+.access_social a i {
+  min-width: 32px;
+}
+
+.main_fields .form-group {
+  position: relative;
+}
+
+.main_fields i {
+  position: absolute;
+  top: 37px;
+  left: 15px;
+  opacity: 0.25;
+}
+
+.main_fields .form-group input {
+  height: 40px;
+  line-height: 40px;
+  padding-left: 35px;
+}
+
+#submit {
+  cursor: pointer;
+}
+.row.justify-content-center {
+  width: 100%;
+  float: left;
+  text-align: center;
+}
+  .row.justify-content-center .col-lg-5 {
+    float: none;
+    text-align: center;
+    display: inline-block;
+    background-color: #fff;
+    margin-top: 31px;
+    margin-bottom: 50px;
+    border-radius: 4px;
+  }
+.jumbotron {
+  padding-top: 0px !important;
+}
+.logo_main.text-center {
+  margin-top: 30px;
+}
+.login_data.bg-white .login_form {
+  width: 100%;
+  float: left;
+}
+  .login_data.bg-white .login_form .access_social, .login_data.bg-white .login_form form .divider, .login_data.bg-white .login_form form .main_fields, .login_data.bg-white .login_form form .form-group {
+    float: none;
+    width: 90%;
+    display: inline-block;
+  }
+    .login_data.bg-white .login_form .access_social a {
+      width: 100%;
+      margin-bottom: 10px;
+      padding: 9px 10px;
+      display: inline-block;
+    }
+  .login_data.bg-white .login_form form {
+    float: left;
+    width: 100%;
+    margin-top: 16px;
+    margin-bottom: 16px;
+  }
+.main_fields.text-left .form-group {
+  width: 100% !important;
+}
+.checkboxes.float-left label {
+  font-size: 16px;
+  font-weight: 400;
+}
+.checkboxes.float-left {
+  width: auto;
+  float: left;
+}
+.forget.float-right {
+  width: auto;
+  float: right;
+}
+  .forget.float-right a {
+    font-size: 16px;
+  }
+.login_data.bg-white .login_form form button.btns {
+  width: 100%;
+  float: left;
+  border: 0px;
+  padding: 10px 0px;
+  margin-top: 20px;
+  background-color: #007bff;
+  margin-bottom: 15px;
+}
+.login_data.bg-white .login_form form a.btn.btn-link {
+  font-size: 16px;
+}
+.btn-primary {
+  width: 100%;
+  margin-bottom: 8px;
+}
+textarea.form-control.pl-5 {
+  padding-left: 35px;
+}
+
+.multiselect-dropdown span.dropdown-btn {
+  margin: 17px 0px !important;
+}
+
+
+
+@media(max-width:575px) {
+  .login_data {
+    padding: 0 25px 25px;
+  }
+}

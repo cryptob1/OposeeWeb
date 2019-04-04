@@ -1,0 +1,54 @@
+<link rel="icon" href="../../assets/images/fav.ico" />
+<title>Opozee</title>
+<div id="login" class="inners">
+
+  <div class="creds p-4">
+
+    <div class="container">
+
+      <div class="row justify-content-center">
+        <div class="col-lg-5 col-md-12 col-sm-12">
+          <div class="login_data bg-white text-center rounded p-md-4  pt-4">
+            <div class="logo_main text-center">
+              <img src="../../assets/images/logo-brain.png" alt="main-logo">
+            </div>
+            <div class="login_form">
+              <form class="w-md-75 mx-auto px-sm-3 my-3 mt-4" [formGroup]="questionPostForm" (ngSubmit)="onSubmit()">
+                <div class="main_fields text-left">
+
+                  <div class="form-group">
+                    <label for="postQuestion">Question</label>
+                    <textarea rows="4" cols="50" formControlName="postQuestion" class="form-control form-control pl-5" [ngClass]="{ 'is-invalid': submitted && f.postQuestion.errors }"></textarea>
+                    <i class="fa fa-inbox"></i>
+
+                    <div *ngIf="postQuestionTemp == 0">question required</div>
+                    {{postQuestionTemp}}
+                  </div>
+
+
+
+  
+                  <div class="form-group">
+                    <label for="hashtagss">Hash Tag</label>
+                    <input type="text" formControlName="hashtags" class="form-control form-control pl-5"  />
+
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <button [disabled]="loading" class="btns bg-primary border-0 w-100 rounded color-white mt-3">Save</button>
+                  <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+    </div>
+  </div>
+
+
+</div>

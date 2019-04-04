@@ -1,0 +1,81 @@
+<div class="mains">
+
+  <section class="banner">
+
+    <div class="banner_text">
+      <!--<h2>find what you need!</h2>-->
+
+      <div class="banner_search-form">
+        <div class="search-input">
+          <input class="form-control my-0 py-1 red-border" type="text" placeholder="Search" aria-label="Search" (keydown)=searchText($event) [(ngModel)]="searchTextModel">
+        </div>
+        <div class="search-button">
+          <a (click)=searchTextButton($event) style="cursor:pointer">Search</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section_second">
+    <div class="container">
+      <div class="cover_heading">
+        <h2>Popular Questions</h2>
+      </div>
+      <div class="row">
+        <div class="col-sm-6" *ngFor="let temp of questionListing">
+          <ul>
+            <li>
+              <div class="cover_questions">
+                <strong><a [routerLink]="['/questiondetail/', temp.Id]">{{temp.Question}}</a></strong>
+                <!--<div class="cover_analysis">
+                  <div class="left">
+                    <span>Analysis</span>   <span>{{temp.HashTags}}</span>
+                    <div class="anlysis_slider">
+                      <span class="color"></span>
+                      <span class="percentage">50%</span>
+                    </div>
+                  </div>
+                </div>-->
+
+                <div class="user_left">
+                  <span class="icon"><img src="../../assets/images/user.png" alt="user" /></span>
+                  <span class="username">
+                    {{temp.OwnerUserName}}
+                  </span>
+
+                </div>
+                <span class="cover_span">{{temp.HashTags}}</span>
+                <div class="user_right"><div class="date"><i>{{ temp.CreationDate | date:'medium' }}</i></div></div>
+              </div>
+            </li>
+
+
+          </ul>
+        </div>
+
+
+
+      </div>
+
+    </div>
+  </section>
+
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12">
+          <ul>
+            <li><a href="#">All Questions</a></li>
+            <li><a href="#">Post Questions</a></li>
+            <li><a href="#">All Questions</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="copywrite"><p>Copywrite@2019</p></div>
+  </footer>
+
+</div>
+

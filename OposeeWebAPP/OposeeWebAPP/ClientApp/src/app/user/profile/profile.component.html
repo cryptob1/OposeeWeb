@@ -1,0 +1,63 @@
+<section class="section_second">
+  <div class="container">
+    <div class="cover_heading">
+      <h2>Profile</h2>
+    </div>
+    <div class="cover_profile">
+
+      <div class="col-sm-12">
+        <div class="profile_div">
+          <div class="image_user">
+            <img src="{{userProfiledata?.ImageURL}}" alt="user" />
+            <div class="edit"><i class="fa fa-pencil" aria-hidden="true" [routerLink]="['/editprofile/',userProfiledata?.UserID]" style="cursor:pointer;"></i></div>
+
+          </div>
+          <h2>{{userProfiledata?.FirstName }} {{userProfiledata?.LastName}}</h2>
+        </div>
+        <div class="col-sm-6">
+     
+          <div class="tocken">
+
+            <img src="../../../assets/images/coin.png" alt="coin" />
+            <label>Balance Token :</label>
+            <strong>{{userProfiledata?.BalanceToken}}</strong>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="tocken">
+            <img src="../../../assets/images/iq.png" alt="coin" />
+            <label>Total Post Questions :</label>
+            <strong>{{userProfiledata?.TotalPostedQuestion}}</strong>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="tocken">
+            <img src="../../../assets/images/like2.png" alt="coin" />
+            <label>Total Like :</label>
+            <strong>{{userProfiledata?.TotalLikes}}</strong>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="tocken">
+            <img src="../../../assets/images/unliek.png" alt="coin" />
+            <label>Totol Dislike :</label>
+            <strong>{{userProfiledata?.TotalDislikes}}</strong>
+          </div>
+        </div>
+
+        <div class="profile_images">
+          <h3>Choose An Option</h3>
+          <div class="col-sm-6" [routerLink]="['/postedQuestionEditList/',Id]" style="cursor:pointer">
+            <img src="../../../assets/images/posted.jpg" alt="posted" />
+          </div>
+          <div class="col-sm-6" [routerLink]="['/postquestion/']" style="cursor:pointer">
+            <img src="../../../assets/images/post.jpg" alt="posted" />
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+</section>

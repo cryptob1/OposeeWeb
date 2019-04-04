@@ -1,0 +1,118 @@
+
+<div class="inner_pages">
+  <section class="section_second">
+    <div class="container">
+      <div class="cover_heading">
+        <h2>ALL Questions</h2>
+
+      </div>
+
+      <div *ngIf="isNotRecordLoaded">
+        <img src="../../../assets/images/reordloaderImages.gif" />
+      </div>
+
+      <div *ngIf="PostQuestionDetailList.length == 0 && isNotRecordLoaded">No record found</div>
+      <div class="row">
+        <div class="col-sm-12">
+          <ul>
+
+            <li>
+
+
+        
+                <div class="cover_questions image_question" *ngFor="let temp of PostQuestionDetailList">
+                  <div class="user_left">
+                    <span class="icon"><img src="{{temp.UserImage}}"></span>
+                    <span class="username">
+                      {{temp.Name}}
+                    </span>
+                  </div>
+                  <div class="user_right"><div class="date"><i>{{temp.CreationDate | date:'medium'}}</i></div></div>
+                  <strong><a [routerLink]="['/questiondetail/', temp.Id]">{{temp.Question}}</a></strong>
+                  <div class="cover_analysis">
+                    <div class="left">
+                      <span>Opinion</span>
+                      <div class="anlysis_slider">
+                        <span [style.width.%]="((temp.YesCount) / (temp.YesCount + temp.NoCount)*100) | number:'1.0-0'" class="color yes_div"></span>
+                        <span class="percentage" *ngIf="temp.YesCount > 0">NO : {{((temp.NoCount) / (temp.YesCount + temp.NoCount)*100) | number:'1.0-0'}} %</span>
+
+                        <span class="percentage_yes" *ngIf="temp.NoCount > 0">Yes : {{((temp.YesCount) / (temp.YesCount + temp.NoCount)*100) | number:'1.0-0'}}  %</span>
+                        <span class="empty_space" *ngIf="temp.YesCount == 0 && temp.YesCount ==0"></span>
+                      </div>
+                    </div>
+                  </div>
+
+
+                  <div class="liked_ones clearfix yes_feedback" *ngIf="temp.MostYesLiked">
+                    <p>{{temp.MostYesLiked?.Comment}}</p>
+                    <div class="row">
+                      <div class="col-sm-6 text-left">
+                        <div class="opinionsList">
+
+                          <span class="icon"><img src="{{temp.MostYesLiked?.UserImage}}" alt="user"></span>
+                          <span class="username">
+                            @
+                            {{temp.MostYesLiked?.CommentedUserName}}
+                          </span>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 text-right">
+                        <div class="thumbs">
+                          <span><img src="../../../assets/images/like.png" alt="user">{{temp.MostYesLiked?.LikesCount}}</span>
+                          <span><img src="../../../assets/images/unlike.png" alt="user">{{temp.MostYesLiked?.DislikesCount}}</span>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+                  </div>
+                  <div class="liked_ones clearfix no_feedback" *ngIf="temp.MostNoLiked">
+                    <p>{{temp.MostNoLiked?.Comment}}</p>
+                    <div class="row">
+
+                      <div class="col-sm-6 text-right">
+                        <div class="thumbs">
+                          <span><img src="../../../assets/images/like.png" alt="user"> {{temp.MostNoLiked?.LikesCount}}</span>
+                          <span><img src="../../../assets/images/unlike.png" alt="user"> {{temp.MostNoLiked?.DislikesCount}}</span>
+                        </div>
+
+                      </div>
+                      <div class="col-sm-6 text-left">
+                        <div class="opinionsList">
+
+                          <span class="icon"><img src="./images/user.png" alt=""></span>
+                          <span class="username">
+                            @
+                            {{temp.MostNoLiked?.CommentedUserName}}
+                          </span>
+                        </div>
+                      </div>
+
+
+                    </div>
+
+
+
+                  </div>
+                </div>
+
+            
+
+            </li>
+          </ul>
+        </div>
+      </div>
+
+
+  
+
+    </div>
+  </section>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+
+  <script src="js/bootstrap.min.js"></script>
+
+</div>
+

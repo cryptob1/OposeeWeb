@@ -1,0 +1,13 @@
+@media (max-width: 767px) {
+  /* On small screens, the nav menu spans the full width of the screen. Leave a space for it. */
+  .body-content {
+    padding-top: 50px;
+  }
+}
+
+
+.inner_page_header {
+  margin-top: 100px !important;
+  float: left;
+  width: 100%;
+}

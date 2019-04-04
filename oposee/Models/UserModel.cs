@@ -29,7 +29,7 @@ namespace oposee.Models
 
         [Display(Name = "Password required")]
         public string Password { get; set; }
-
+        public string ImageURL { get; set; }
 
         public int UserId { get; set; }
 

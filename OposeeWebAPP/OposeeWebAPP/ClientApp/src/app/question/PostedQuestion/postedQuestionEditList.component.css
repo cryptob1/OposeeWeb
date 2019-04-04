@@ -1,0 +1,9 @@
+.user_edit-right {
+  width: 50%;
+  float: left;
+  text-align: right;
+}
+  .user_edit-right a {
+    margin-left: 12px;
+    color: #333;
+  }

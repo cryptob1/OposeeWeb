@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="icon" href="./assets/images/fav.ico" />
+  <!--<link href="assets/css/bootstrap.css" rel="stylesheet" />-->
+  <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+  <link href="assets/css/style.css" rel="stylesheet" />
+  <link href="assets/css/loginstyle.css" rel="stylesheet" />
+
+  <link href="assets/css/questionlisting.css" rel="stylesheet" />
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
+  <link href="assets/css/profile.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
+  <link href="assets/css/toast.css" rel="stylesheet" />
+</head>
+<body class="home">
+  <app-root>Loading...</app-root>
+
+
+  <script src="assets/css/js/jquery.min.js"></script>
+  <script src="assets/css/js/popper.min.js"></script>
+  <script src="assets/css/js/jquery-3.2.1.slim.min.js"></script>
+  <script src="assets/css/js/bootstrap.min.js"></script>
+  <script src="https://cdn.rawgit.com/oauth-io/oauth-js/c5af4519/dist/oauth.js"></script>
+
+
+  <script>
+
+    function loginwithTwitter() {
+
+
+      // Initialize with your OAuth.io app public key
+      OAuth.initialize('mxSggQ15OMbJWeKo3ONOVPO7jy4');
+      // Use popup for OAuth
+      OAuth.popup('twitter').then(twitter => {
+        console.log('twitter:', twitter);
+        twitter.me().then(data => {
+          debugger;
+          console.log('data:', data);
+        });
+
+        twitter.get('/1.1/account/verify_credentials.json?include_email=true').then(data => {
+          var s = document.getElementById('loginwithTwitter');
+          s.value = data.id + '_' + data.email + '_' + data.name
+          document.getElementById("loginwithTwitter").click(data);
+        })
+      });
+    }
+  </script>
+
+
+
+
+</body>
+
+</html>

@@ -7,32 +7,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oposee", "oposee\oposee.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oposee.Models", "oposee.Models\oposee.Models.csproj", "{2D4A3C77-390C-44B2-995A-A78DE676F6C5}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Angular5TF1", "Angular5TF1\Angular5TF1.csproj", "{80E0F020-870D-4C88-B7A9-4AEDC6DACA1A}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OposeeLibrary", "OposeeLibrary\OposeeLibrary.csproj", "{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oposee.Web", "Oposee.Web\Oposee.Web.csproj", "{AF03BC01-9021-4D2E-A808-CDEE512A6B91}"
 EndProject
-Project("{E24C65DC-7377-472B-9ABA-BC803B73C61A}") = "my-app", "my-app\", "{D7012FED-2831-4A6B-88FB-456972D4A4F3}"
-	ProjectSection(WebsiteProperties) = preProject
-		TargetFrameworkMoniker = ".NETFramework,Version%3Dv4.0"
-		Debug.AspNetCompiler.VirtualPath = "/localhost_58485"
-		Debug.AspNetCompiler.PhysicalPath = "my-app\"
-		Debug.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58485\"
-		Debug.AspNetCompiler.Updateable = "true"
-		Debug.AspNetCompiler.ForceOverwrite = "true"
-		Debug.AspNetCompiler.FixedNames = "false"
-		Debug.AspNetCompiler.Debug = "True"
-		Release.AspNetCompiler.VirtualPath = "/localhost_58485"
-		Release.AspNetCompiler.PhysicalPath = "my-app\"
-		Release.AspNetCompiler.TargetPath = "PrecompiledWeb\localhost_58485\"
-		Release.AspNetCompiler.Updateable = "true"
-		Release.AspNetCompiler.ForceOverwrite = "true"
-		Release.AspNetCompiler.FixedNames = "false"
-		Release.AspNetCompiler.Debug = "False"
-		VWDPort = "58485"
-		SlnRelativePath = "my-app\"
-	EndProjectSection
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OposeeWebAPP", "OposeeWebAPP\OposeeWebAPP\OposeeWebAPP.csproj", "{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -48,10 +27,6 @@ Global
 		{2D4A3C77-390C-44B2-995A-A78DE676F6C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{2D4A3C77-390C-44B2-995A-A78DE676F6C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{2D4A3C77-390C-44B2-995A-A78DE676F6C5}.Release|Any CPU.Build.0 = Release|Any CPU
-		{80E0F020-870D-4C88-B7A9-4AEDC6DACA1A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{80E0F020-870D-4C88-B7A9-4AEDC6DACA1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{80E0F020-870D-4C88-B7A9-4AEDC6DACA1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{80E0F020-870D-4C88-B7A9-4AEDC6DACA1A}.Release|Any CPU.Build.0 = Release|Any CPU
 		{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -60,10 +35,10 @@ Global
 		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D7012FED-2831-4A6B-88FB-456972D4A4F3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7012FED-2831-4A6B-88FB-456972D4A4F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D7012FED-2831-4A6B-88FB-456972D4A4F3}.Release|Any CPU.ActiveCfg = Debug|Any CPU
-		{D7012FED-2831-4A6B-88FB-456972D4A4F3}.Release|Any CPU.Build.0 = Debug|Any CPU
+		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
