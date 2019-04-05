@@ -1,7 +1,7 @@
 {
   "version": 3,
   "targets": {
-    ".NETFramework,Version=v4.6.2": {
+    ".NETFramework,Version=v4.7.2": {
       "Newtonsoft.Json/12.0.1": {
         "type": "package",
         "compile": {
@@ -12,7 +12,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.6.2/win": {
+    ".NETFramework,Version=v4.7.2/win": {
       "Newtonsoft.Json/12.0.1": {
         "type": "package",
         "compile": {
@@ -23,7 +23,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.6.2/win-x64": {
+    ".NETFramework,Version=v4.7.2/win-x64": {
       "Newtonsoft.Json/12.0.1": {
         "type": "package",
         "compile": {
@@ -34,7 +34,7 @@
         }
       }
     },
-    ".NETFramework,Version=v4.6.2/win-x86": {
+    ".NETFramework,Version=v4.7.2/win-x86": {
       "Newtonsoft.Json/12.0.1": {
         "type": "package",
         "compile": {
@@ -48,10 +48,11 @@
   },
   "libraries": {
     "Newtonsoft.Json/12.0.1": {
-      "sha512": "jmVyoEyk0In8r+AObYQyFKVFm7uSRzE0XSHSbEtBJcZDMV6DqJoyB4FLcHwprPVhAh826so0db3DIKXVnpGoPA==",
+      "sha512": "pBR3wCgYWZGiaZDYP+HHYnalVnPJlpP1q55qvVb+adrDHmFMDc1NAKio61xTwftK3Pw5h7TZJPJEEVMd6ty8rg==",
       "type": "package",
       "path": "newtonsoft.json/12.0.1",
       "files": [
+        ".nupkg.metadata",
         ".signature.p7s",
         "LICENSE.md",
         "lib/net20/Newtonsoft.Json.dll",
@@ -87,44 +88,42 @@
     }
   },
   "projectFileDependencyGroups": {
-    ".NETFramework,Version=v4.6.2": [
+    ".NETFramework,Version=v4.7.2": [
       "Newtonsoft.Json >= 12.0.1"
     ]
   },
   "packageFolders": {
-    "C:\\Users\\IMAX\\.nuget\\packages\\": {}
+    "C:\\Users\\vishr_000\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\oposee\\oposee\\OposeeLibrary\\OposeeLibrary.csproj",
+      "projectUniqueName": "C:\\code\\OpozeeWeb\\OposeeLibrary\\OposeeLibrary.csproj",
       "projectName": "OposeeLibrary",
-      "projectPath": "D:\\oposee\\oposee\\OposeeLibrary\\OposeeLibrary.csproj",
-      "packagesPath": "C:\\Users\\IMAX\\.nuget\\packages\\",
-      "outputPath": "D:\\oposee\\oposee\\OposeeLibrary\\obj\\",
+      "projectPath": "C:\\code\\OpozeeWeb\\OposeeLibrary\\OposeeLibrary.csproj",
+      "packagesPath": "C:\\Users\\vishr_000\\.nuget\\packages\\",
+      "outputPath": "C:\\code\\OpozeeWeb\\OposeeLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "skipContentFileWrite": true,
       "configFilePaths": [
-        "C:\\Users\\IMAX\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\DevExpress 18.2.config",
+        "C:\\Users\\vishr_000\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
-        "net462"
+        "net472"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\DevExpress 18.2\\Components\\System\\Components\\Packages": {},
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
-        "net462": {
+        "net472": {
           "projectReferences": {}
         }
       }
     },
     "frameworks": {
-      "net462": {
+      "net472": {
         "dependencies": {
           "Newtonsoft.Json": {
             "target": "Package",

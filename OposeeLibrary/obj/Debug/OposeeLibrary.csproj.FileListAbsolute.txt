@@ -7,3 +7,12 @@ D:\oposee\oposee\OposeeLibrary\obj\Debug\OposeeLibrary.csproj.CoreCompileInputs.
 D:\oposee\oposee\OposeeLibrary\obj\Debug\OposeeLibrary.csproj.CopyComplete
 D:\oposee\oposee\OposeeLibrary\obj\Debug\OposeeLibrary.dll
 D:\oposee\oposee\OposeeLibrary\obj\Debug\OposeeLibrary.pdb
+C:\code\OpozeeWeb\OposeeLibrary\bin\Debug\OposeeLibrary.dll
+C:\code\OpozeeWeb\OposeeLibrary\bin\Debug\OposeeLibrary.pdb
+C:\code\OpozeeWeb\OposeeLibrary\bin\Debug\Newtonsoft.Json.dll
+C:\code\OpozeeWeb\OposeeLibrary\bin\Debug\Newtonsoft.Json.pdb
+C:\code\OpozeeWeb\OposeeLibrary\obj\Debug\OposeeLibrary.csprojAssemblyReference.cache
+C:\code\OpozeeWeb\OposeeLibrary\obj\Debug\OposeeLibrary.csproj.CoreCompileInputs.cache
+C:\code\OpozeeWeb\OposeeLibrary\obj\Debug\OposeeLibrary.csproj.CopyComplete
+C:\code\OpozeeWeb\OposeeLibrary\obj\Debug\OposeeLibrary.dll
+C:\code\OpozeeWeb\OposeeLibrary\obj\Debug\OposeeLibrary.pdb
