@@ -1,15 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28010.2041
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28729.10
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oposee", "oposee\oposee.csproj", "{95A1EA1E-E2E2-470B-B651-8C71A8BDFFF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "oposee.Models", "oposee.Models\oposee.Models.csproj", "{2D4A3C77-390C-44B2-995A-A78DE676F6C5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OposeeLibrary", "OposeeLibrary\OposeeLibrary.csproj", "{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}"
-EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oposee.Web", "Oposee.Web\Oposee.Web.csproj", "{AF03BC01-9021-4D2E-A808-CDEE512A6B91}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OposeeWebAPP", "OposeeWebAPP\OposeeWebAPP\OposeeWebAPP.csproj", "{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}"
 EndProject
@@ -31,10 +29,6 @@ Global
 		{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F3739FA4-8BFD-452D-9D3F-8F310FBF3C9B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{AF03BC01-9021-4D2E-A808-CDEE512A6B91}.Release|Any CPU.Build.0 = Release|Any CPU
 		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7B8BA2FE-2AA1-4169-A882-6990DDDB1245}.Release|Any CPU.ActiveCfg = Release|Any CPU

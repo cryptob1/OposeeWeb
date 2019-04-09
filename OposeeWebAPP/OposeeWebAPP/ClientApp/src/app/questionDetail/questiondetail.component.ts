@@ -45,10 +45,7 @@ export class Questiondetail implements OnInit {
   PostQuestionDetailModel: BookMarkQuestion = new BookMarkQuestion();
   // isExpanded = false;
   constructor(private route: ActivatedRoute, private userService: UserService, private formBuilder: FormBuilder, private router: Router,
-
     private toastr: ToastrService
-
-
   ) {
     this.localStorageUser = JSON.parse(localStorage.getItem('currentUser'));
 
@@ -65,29 +62,20 @@ export class Questiondetail implements OnInit {
   ngOnInit() {
     this.postOpinionForm = this.formBuilder.group({
       firstName: ['', Validators.required],
-
     });
+
     this.getQuestionDetail()
-
   }
-
-
-
-
-
+    
   getQuestionDetail() {
-
-    debugger;
+    //debugger;
     this.userService.getquestionDetails(this.Id, this.localStorageUser.Id).subscribe(data => {
-      debugger;
-
-
+      //debugger;
       this.PostQuestionDetailModel = data as BookMarkQuestion;
       this.PostQuestionDetailModel.comments = data['Comments'];
       this.PostQuestionDetailModel.postQuestionDetail = data['PostQuestionDetail'];
-      //console.log(this.PostQuestionDetailModel);
+      //console.log('data',this.PostQuestionDetailModel);
     });
-
   }
 
   saveLikeclick(Likes, index) {

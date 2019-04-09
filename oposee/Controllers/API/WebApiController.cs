@@ -289,7 +289,8 @@ namespace oposee.Controllers.API
                     objitem.OwnerUserName = reader["UserName"].ToString();
                     objitem.Question = reader["PostQuestion"].ToString();
                     objitem.HashTags = reader["HashTags"].ToString();
-
+                    objitem.ImageURL = string.IsNullOrEmpty(reader["ImageURL"].ToString())?"": reader["ImageURL"].ToString();
+                   
                     Objlikdelist.Add(objitem);
                 }
 
@@ -608,26 +609,9 @@ namespace oposee.Controllers.API
                                                              CreationDate = q.CreationDate,
                                                              IsBookmark = db.BookMarks.Where(b => b.UserId == UserId && b.QuestionId == id).Select(b => b.IsBookmark.HasValue ? b.IsBookmark.Value : false).FirstOrDefault(),
                                                          }).FirstOrDefault();
+                    
+                    questionDetail.Comments = this.SortedComments(id, UserId);
 
-
-                    questionDetail.Comments = (from e in db.Opinions
-                                               join t in db.Users on e.CommentedUserId equals t.UserID
-                                               where e.QuestId == id
-                                               select new Comments
-                                               {
-                                                   Id = e.Id,
-                                                   Comment = e.Comment,
-                                                   CommentedUserId = t.UserID,
-                                                   Name = t.FirstName + " " + t.LastName,
-                                                   UserImage = string.IsNullOrEmpty(t.ImageURL) ? "" : t.ImageURL,
-                                                   LikesCount = db.Notifications.Where(p => p.CommentId == e.Id && p.Like == true).Count(),
-                                                   DislikesCount = db.Notifications.Where(p => p.CommentId == e.Id && p.Dislike == true).Count(),
-                                                   Likes = db.Notifications.Where(p => p.CommentedUserId == UserId && p.CommentId == e.Id).Select(b => b.Like.HasValue ? b.Like.Value : false).FirstOrDefault(),
-                                                   DisLikes = db.Notifications.Where(p => p.CommentedUserId == UserId && p.CommentId == e.Id).Select(b => b.Dislike.HasValue ? b.Dislike.Value : false).FirstOrDefault(),
-                                                   CommentedUserName = t.UserName,
-                                                   IsAgree = e.IsAgree,
-                                                   CreationDate = e.CreationDate
-                                               }).ToList();
                     return questionDetail;
                     // return Request.CreateResponse(HttpStatusCode.OK, JsonResponse.GetResponse(ResponseCode.Success, questionDetail, "AllOpinion"));
                 }
@@ -637,6 +621,76 @@ namespace oposee.Controllers.API
                 return questionDetail;
                 //  OposeeLibrary.Utilities.LogHelper.CreateLog3(ex, Request);
                 //  return Request.CreateResponse(HttpStatusCode.OK, JsonResponse.GetResponse(ResponseCode.Failure, ex.Message, "AllOpinion"));
+            }
+        }
+
+        private List<Comments> SortedComments(int id, int UserId)
+        {
+            try
+            {
+                var cList = (from e in db.Opinions
+                             join t in db.Users on e.CommentedUserId equals t.UserID
+                             where e.QuestId == id
+                             select new Comments
+                             {
+                                 Id = e.Id,
+                                 Comment = e.Comment,
+                                 CommentedUserId = t.UserID,
+                                 Name = t.FirstName + " " + t.LastName,
+                                 UserImage = string.IsNullOrEmpty(t.ImageURL) ? "" : t.ImageURL,
+                                 LikesCount = db.Notifications.Where(p => p.CommentId == e.Id && p.Like == true).Count(),
+                                 DislikesCount = db.Notifications.Where(p => p.CommentId == e.Id && p.Dislike == true).Count(),
+                                 Likes = db.Notifications.Where(p => p.CommentedUserId == UserId && p.CommentId == e.Id).Select(b => b.Like.HasValue ? b.Like.Value : false).FirstOrDefault(),
+                                 DisLikes = db.Notifications.Where(p => p.CommentedUserId == UserId && p.CommentId == e.Id).Select(b => b.Dislike.HasValue ? b.Dislike.Value : false).FirstOrDefault(),
+                                 CommentedUserName = t.UserName,
+                                 IsAgree = e.IsAgree,
+                                 CreationDate = e.CreationDate
+                             }).ToList();
+
+                var YesComments = cList.Where(x => x.IsAgree == true).OrderByDescending(x => (x.LikesCount - x.DislikesCount)).ToList();
+                var NoComments = cList.Where(x => x.IsAgree == false).OrderByDescending(x => (x.LikesCount - x.DislikesCount)).ToList();
+
+                List<Comments> _commentList = new List<Comments>();
+                for (var i = 1; i < cList.Count + 1; i++)
+                {
+                    Comments comment = null;
+
+                    if (i % 2 == 0) //even=no
+                    {
+                        if (NoComments.Count > 0)
+                        {
+                            comment = NoComments[0];
+                            NoComments.Remove(comment);
+                        }
+                        else if (YesComments.Count > 0)
+                        {
+                            comment = YesComments[0];
+                            YesComments.Remove(comment);
+                        }
+                    }
+                    else
+                    {
+                        if (YesComments.Count > 0)
+                        {
+                            comment = YesComments[0];
+                            YesComments.Remove(comment);
+                        }
+                        else if (NoComments.Count > 0)
+                        {
+                            comment = NoComments[0];
+                            NoComments.Remove(comment);
+                        }
+                    }
+
+                    if (comment != null)
+                        _commentList.Add(comment);
+                }
+
+                return _commentList;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
 
@@ -703,7 +757,7 @@ namespace oposee.Controllers.API
                 questionDetail = (from q in db.Questions
                                   join b in db.BookMarks on q.Id equals b.QuestionId
                                   join u in db.Users on b.UserId equals u.UserID
-                                  where q.IsDeleted == false && u.UserID == userId && b.IsBookmark == true
+                                  where q.IsDeleted == false && u.UserID != userId && b.IsBookmark == true
                                   select new PostQuestionDetailWebModel
                                   {
                                       Id = q.Id,

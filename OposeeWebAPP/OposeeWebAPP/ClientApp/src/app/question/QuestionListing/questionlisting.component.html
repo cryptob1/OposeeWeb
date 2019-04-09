@@ -30,6 +30,9 @@
                   </div>
                   <!--<div class="user_right"><div class="date"><i>{{temp.CreationDate | date:'medium'}}</i></div></div>-->
                   <strong><a>{{temp.Question}}</a></strong>
+          
+                    <a>{{temp.HashTags}}</a>
+             
                   <div class="cover_analysis">
                     <div class="left">
                       <span>Opinion</span>
@@ -88,7 +91,7 @@
                         <div class="opinionsList">
 
 
-                          <span class="icon"><img src="{{temp.MostNoLiked?.UserImage}}" ></span>
+                          <span class="icon"><img src="{{temp.MostNoLiked?.UserImage}}"></span>
                           <!--<span class="icon"><img src="./images/user.png" alt=""></span>-->
                           <span class="username">
                             @
