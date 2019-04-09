@@ -564,13 +564,14 @@ span.bell-icon {
 .yes_feedback, .no_feedback {
   width: 90% !important;
   float: left !important;
-  border: 2px solid #528f24;
+  border: 2px solid #D2F3C8;
+  border-radius: 25px;
   padding: 15px !important;
   margin-top: 16px;
 }
 .no_feedback {
   float: right !important;
-  border: 2px solid #902424;
+  border: 2px solid #FAC7C7;
 }
 .cover_questions.image_question span.icon {
   width: 29px !important;
