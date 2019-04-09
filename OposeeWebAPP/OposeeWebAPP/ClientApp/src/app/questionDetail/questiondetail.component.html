@@ -23,7 +23,9 @@
               <span class="text_profile">
 
                 <span class="user_123">{{PostQuestionDetailModel.postQuestionDetail?.OwnerUserName}}</span>
+
               </span>
+              {{PostQuestionDetailModel.postQuestionDetail.HashTags}}
               <!--<span class="time">{{PostQuestionDetailModel.postQuestionDetail?.CreationDate | date:'medium'}}</span>-->
               <p>{{PostQuestionDetailModel.postQuestionDetail.Question}}</p>
               <div class="opiniuns">
@@ -41,7 +43,7 @@
                       <span class="empty_space"></span>
                     </div>
                   </div>
-                  
+
                 </div>
               </div>
             </span>
@@ -87,19 +89,26 @@
               <i class="fa fa-plus" aria-hidden="true" (click)="commentSend()"></i>
             </div>
             <div class="cover_buttons" *ngIf="isWanttoSentComment" >
-              <a (click)="clickYes()" style="cursor:pointer">YES</a>
-              <a (click)="clickNO()" style="cursor:pointer">NO</a>
+              <div class="conatiner">
+                <div class="row">
+                  <div class="col-xs-12 text-center">
+                    <a (click)="clickYes()" style="cursor:pointer">YES</a>
+                    <a (click)="clickNO()" style="cursor:pointer">NO</a>
 
-              <div class="comment_box" *ngIf="Isclicked">
-                <textarea [(ngModel)]="dataModel.Comment"></textarea>
+                    <div class="comment_box" *ngIf="Isclicked">
+                      <textarea [(ngModel)]="dataModel.Comment"></textarea>
 
-                <a (click)="saveOpinionclick()" style="cursor:pointer">Send</a>
-                <a (click)="cancelclick()" style="cursor:pointer">Cancel</a>
-                <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
-                <div *ngIf="0">Email required</div>
+                      <a (click)="saveOpinionclick()" style="cursor:pointer">Send</a>
+                      <a (click)="cancelclick()" style="cursor:pointer">Cancel</a>
+                      <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+                      <div *ngIf="0">Email required</div>
 
 
+                    </div>
+                  </div>
+                </div>
               </div>
+            
             </div>
 
 

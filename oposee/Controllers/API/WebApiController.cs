@@ -289,7 +289,8 @@ namespace oposee.Controllers.API
                     objitem.OwnerUserName = reader["UserName"].ToString();
                     objitem.Question = reader["PostQuestion"].ToString();
                     objitem.HashTags = reader["HashTags"].ToString();
-
+                    objitem.ImageURL = string.IsNullOrEmpty(reader["ImageURL"].ToString())?"": reader["ImageURL"].ToString();
+                   
                     Objlikdelist.Add(objitem);
                 }
 
@@ -756,7 +757,7 @@ namespace oposee.Controllers.API
                 questionDetail = (from q in db.Questions
                                   join b in db.BookMarks on q.Id equals b.QuestionId
                                   join u in db.Users on b.UserId equals u.UserID
-                                  where q.IsDeleted == false && u.UserID == userId && b.IsBookmark == true
+                                  where q.IsDeleted == false && u.UserID != userId && b.IsBookmark == true
                                   select new PostQuestionDetailWebModel
                                   {
                                       Id = q.Id,

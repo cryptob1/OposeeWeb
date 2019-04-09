@@ -22,6 +22,7 @@ namespace oposee.Models.API
 
         public int Like { get; set; }
 
+        public string ImageURL { get; set; }
 
     }
 

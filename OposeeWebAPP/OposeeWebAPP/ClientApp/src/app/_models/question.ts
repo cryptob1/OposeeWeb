@@ -5,6 +5,7 @@ export class QuestionListing {
   userName: string;
   hashtags: string;
   creationdate: string;
+  ImageURL: string;
 }
 
 
